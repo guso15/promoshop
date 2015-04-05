@@ -1,0 +1,48 @@
+{namespace prs=Tx_Promoshop_ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="tx-promoshop-output">
+
+<h3><f:translate key="tx_promoshop_general_header.booking" /></h3>
+
+<f:if condition="{isCreated}">
+	<f:then>
+		<p class="bodytext">
+			<f:translate key="tx_promoshop_general_text.alreadybooked" />
+		</p>
+		<div style="height: 350px;">&#160;</div>
+	</f:then>
+	<f:else>
+		<p class="bodytext">
+			<f:format.nl2br>
+				<f:translate key="tx_promoshop_general_text.created" /> <b><f:link.external uri="{filePath}{prs:render.pdf(params: '{outputParams}')}">Download <f:translate key="tx_promoshop_domain_model_booking.file" /></f:link.external></b>
+				
+				<f:translate key="tx_promoshop_general_text.created.2" />
+			</f:format.nl2br>
+		</p>
+		
+		<f:if condition="{prs:render.mail(params: '{outputParams}')} == 1">
+			<f:then>
+				<p class="bodytext">
+					<f:translate key="tx_promoshop_general_text.mailing" />
+				</p>
+			</f:then>
+			<f:else>
+				<p class="bodytext">
+					<f:translate key="tx_promoshop_general_text.mailerror" />
+				</p>
+			</f:else>
+		</f:if>
+		
+		<div style="height: 250px;">&#160;</div>
+	</f:else>
+</f:if>
+
+<f:flashMessages />
+
+</div>
+
+</f:section>

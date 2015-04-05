@@ -1,0 +1,138 @@
+{namespace prs=Tx_Promoshop_ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="tx-promoshop-output">
+
+<prs:security.ifAuthenticated>
+	<f:flashMessages />
+	<f:then>
+		
+		
+		<h3><f:translate key="tx_promoshop_general_header.confirm" /></h3>
+
+		<f:flashMessages />
+		
+		<f:if condition="{customer}">
+			<p class="bodytext">
+				<br />
+				<b><f:translate key="tx_promoshop_general_segment.destination" /></b>
+				<br />
+				{customer.company}
+				<br />
+				{customer.firstName} {customer.lastName}
+				<br />
+				{customer.address}
+				<br />
+				{customer.zip} {customer.city}
+				<br /><br />
+				
+				<b><f:translate key="tx_promoshop_general_segment.contact" /></b>
+				<br />
+				<f:translate key="tx_promoshop_domain_model_customer.telephone" />: {customer.telephone}
+				<br />
+			
+				<f:if condition="{customer.fax}">
+					<f:translate key="tx_promoshop_domain_model_customer.fax" />: {customer.fax}
+					<br />
+				</f:if>
+			
+				<f:translate key="tx_promoshop_domain_model_customer.mobile" />: {customer.mobile}
+				<br />
+				<f:translate key="tx_promoshop_domain_model_customer.email" />: {customer.email}
+				<br /><br />
+				
+				<b><f:translate key="tx_promoshop_general_segment.vb" /></b>
+				<br />
+				<f:translate key="tx_promoshop_general.name" />: {customer.vbname}
+				<br />
+			
+				<f:if condition="{customer.vbphone}">
+					<f:translate key="tx_promoshop_general.phone" />: {customer.vbphone}
+					<br />
+				</f:if>
+			</p>
+			
+			<f:if condition="{bookingitems}">
+				<p class="bodytext">
+					<b><f:translate key="tx_promoshop_domain_model_booking.bookingitems" /></b>
+				</p>
+				<table>
+					<f:for each="{bookingitems}" as="quantity" key="product">
+						<f:if condition="{quantity} > 0">
+							<tr>
+								<td><prs:helpers.getBookedProduct product="{product}" /></td>
+								<td><f:translate key="tx_promoshop_domain_model_bookingitem.quantity" />: {quantity}</td>
+							</tr>
+						</f:if>
+					</f:for>
+				</table>
+			</f:if>
+				
+			<p class="bodytext">
+				<b><f:translate key="tx_promoshop_general_segment.delivery" /></b>
+				<br />
+				<f:translate key="tx_promoshop_domain_model_booking.delivery" />: <f:translate key="tx_promoshop_domain_model_booking.delivery.{customer.delivery}" />
+				<br />
+				<f:translate key="tx_promoshop_general_time.span" />: 
+				<b><prs:helpers.timeToDate timestamp="{customer.starttime}" /> <f:translate key="tx_promoshop_general_time.clock" /> </b> 
+				<f:translate key="tx_promoshop_general.until" /> 
+				<b><prs:helpers.timeToDate timestamp="{customer.endtime}" /> <f:translate key="tx_promoshop_general_time.clock" /></b>
+			</p>
+		</f:if>
+		
+		<f:form method="post" controller="Booking" action="create"  name="newBooking" object="{newBooking}" arguments="{selectedProducts : bookingitems}" class="vodaForm">
+			<br class="clear">
+			<div id="formButtons">
+				<f:form.hidden property="company" value="{company}" />
+				<f:form.hidden property="gender" value="{gender}" />
+				<f:form.hidden property="firstName" value="{firstName}" />
+				<f:form.hidden property="lastName" value="{lastName}" />
+				<f:form.hidden property="address" value="{address}" />
+				<f:form.hidden property="zip" value="{zip}" />
+				<f:form.hidden property="city" value="{city}" />
+				<f:form.hidden property="telephone" value="{telephone}" />
+				<f:form.hidden property="fax" value="{fax}" />
+				<f:form.hidden property="mobile" value="{mobile}" />
+				<f:form.hidden property="email" value="{email}" />
+				<f:form.hidden property="vbname" value="{vbname}" />
+				<f:form.hidden property="vbphone" value="{vbphone}" />
+				<f:form.hidden property="starttime" value="{starttime}" />
+				<f:form.hidden property="endtime" value="{endtime}" />
+				<f:form.hidden property="delivery" value="{delivery}" />
+				<f:form.hidden name="agb" value="{agb}" />
+				
+				<f:if condition="{bookingitems}">
+					<f:for each="{bookingitems}" as="quantity" key="product">
+						<f:if condition="{quantity} > 0">
+							<f:form.hidden name="bookingitems[product][]" value="{product}" />
+							<f:form.hidden name="bookingitems[quantity][]" value="{quantity}" />
+						</f:if>
+					</f:for>
+				</f:if>
+				
+				<span class="aButton bgCallToAction">
+				<span>
+				<f:form.submit value="{f:translate(key: 'tx_promoshop_general_submit.order')}" />
+				</span>
+				</span>
+				
+				<span class="aButton bgCallToAction">
+				<span>
+				<f:form.submit name="backlink" value="{f:translate(key: 'tx_promoshop_general_submit.back')}" />
+				</span>
+				</span>
+				
+			</div>
+		</f:form>
+	</f:then>
+	<f:else>
+		<f:render partial="AccessError" />
+	</f:else>
+</prs:security.ifAuthenticated>
+
+</div>
+
+</f:section>

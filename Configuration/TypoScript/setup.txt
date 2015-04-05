@@ -1,0 +1,48 @@
+page.includeCSS.promoshop = EXT:promoshop/Resources/Public/Styles/promoshop.css
+
+plugin.tx_promoshop {
+	view {
+		templateRootPath = {$plugin.tx_promoshop.view.templateRootPath}
+		partialRootPath = {$plugin.tx_promoshop.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_promoshop.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_promoshop.persistence.storagePid}
+		productStoragePid = {$plugin.tx_promoshop.persistence.productStoragePid}
+	}
+	settings {
+		allowedProductCategories = {$plugin.tx_promoshop.settings.allowedProductCategories}
+		filePath = {$plugin.tx_promoshop.settings.filePath}
+		adminMail = {$plugin.tx_promoshop.settings.adminMail}
+		mailHeaderImage = {$plugin.tx_promoshop.settings.mailHeaderImage}
+	}
+}
+
+plugin.tx_promoshop._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+)
+
+ # Module configuration
+module.tx_promoshop {
+	persistence {
+		storagePid = {$module.tx_promoshop.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_promoshop.view.templateRootPath}
+		partialRootPath = {$module.tx_promoshop.view.partialRootPath}
+		layoutRootPath = {$module.tx_promoshop.view.layoutRootPath}
+	}
+}
+
+config.tx_extbase {
+	persistence.classes {
+		Tx_Promoshop_Domain_Model_Customer {
+			mapping {
+				tableName = fe_users
+			}
+		}
+	}
+}

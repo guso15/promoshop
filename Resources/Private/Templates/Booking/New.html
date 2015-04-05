@@ -1,0 +1,69 @@
+{namespace prs=Tx_Promoshop_ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="tx-promoshop-output">
+
+<prs:security.ifAuthenticated>
+	<f:flashMessages />
+	<f:then>
+		<h3><f:translate key="tx_promoshop_general_header.contact" /></h3>
+
+		<!--<f:flashMessages />-->
+
+		<f:render partial="FormErrors" />
+
+		<f:form method="post" controller="Booking" action="exit"  name="newBooking" object="{newBooking}" arguments="{selectedProducts : selectedProducts}" class="vodaForm">
+			<ul class="formList wideFormList clear">
+				<f:if condition="{customer}">
+					<f:then>
+						<f:render partial="Customer/FormFields" arguments="{customer: customer}" />
+					</f:then>
+					<f:else>
+						<f:render partial="Booking/FormFields" />
+					</f:else>
+				</f:if>
+				<f:form.hidden property="starttime" value="{starttime}" />
+				<f:form.hidden property="endtime" value="{endtime}" />
+			</ul>
+			<br class="clear">
+			<div id="formButtons">
+			
+				<f:if condition="{selectedProducts}">
+					<f:for each="{selectedProducts}" as="quantity" key="product">
+						<f:if condition="{quantity} > 0">
+							<f:form.hidden name="bookingitems[product][]" value="{product}" />
+							<f:form.hidden name="bookingitems[quantity][]" value="{quantity}" />
+						</f:if>
+					</f:for>
+				</f:if>
+				
+				<f:form.hidden property="delivery" value="{delivery}" />
+				<f:form.hidden name="agb" value="{agb}" />
+				
+				<div class="formnote"><f:translate key="tx_promoshop_general_note.required" /></div>
+				
+				<span class="aButton bgCallToAction">
+				<span>
+				<f:form.submit value="{f:translate(key: 'tx_promoshop_general_submit.forward')}" />
+				</span>
+				</span>
+				
+				<span class="aButton bgCallToAction">
+				<span>
+				<f:form.submit name="backlink" value="{f:translate(key: 'tx_promoshop_general_submit.back')}" /> 
+				</span>
+				</span>
+			</div>
+		</f:form>
+	</f:then>
+	<f:else>
+		<f:render partial="AccessError" />
+	</f:else>
+</prs:security.ifAuthenticated>
+
+</div>
+
+</f:section>

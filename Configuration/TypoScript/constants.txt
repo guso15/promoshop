@@ -1,0 +1,44 @@
+plugin.tx_promoshop {
+	view {
+		# cat=plugin.tx_promoshop/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:promoshop/Resources/Private/Templates/
+		# cat=plugin.tx_promoshop/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:promoshop/Resources/Private/Partials/
+		# cat=plugin.tx_promoshop/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:promoshop/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_promoshop//a; type=int+; label=Default storage PID (FE)
+		storagePid =
+		# cat=plugin.tx_promoshop//a; type=int+; label=Product storage PID (FE)
+		productStoragePid =
+	}
+	settings {
+		# cat=plugin.tx_promoshop//a; type=int+; label=Allowed product categorie (FE)
+		allowedProductCategories =
+		
+		# cat=plugin.tx_promoshop//a; type=string; label=Admin E-Mail (FE)
+		adminMail = 
+		
+		# cat=plugin.tx_promoshop/file; type=string; label=File path (FE)
+		filePath = uploads/tx_promoshop/bookings/
+		
+		# cat=plugin.tx_promoshop//a; type=string; label=Mail header image (FE)
+		mailHeaderImage = maillimage.jpg
+	}
+}
+
+module.tx_promoshop {
+	view {
+		# cat=module.tx_promoshop/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:promoshop/Resources/Private/Backend/Templates/
+		# cat=module.tx_promoshop/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:promoshop/Resources/Private/Backend/Partials/
+		# cat=module.tx_promoshop/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:promoshop/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=module.tx_promoshop//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}

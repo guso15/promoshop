@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'promoshop'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_promoshop_domain_model_booking">Booking</label>
+			<label index="tx_promoshop_domain_model_booking.delivery">Delivery</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.fetch">Fetch</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.deliver">Deliver</label>
+			<label index="tx_promoshop_domain_model_booking.bookingitems">Bookingitems</label>
+			<label index="tx_promoshop_domain_model_booking.customer">Customer</label>
+			<label index="tx_promoshop_domain_model_booking.gender">Gender</label>
+			<label index="tx_promoshop_domain_model_booking.vbname">VB Name</label>
+			<label index="tx_promoshop_domain_model_booking.vbphone">VB Phone number</label>
+			<label index="tx_promoshop_domain_model_booking.destination">Destination</label>
+			
+			<label index="tx_promoshop_domain_model_bookingitem">Bookingitem</label>
+			<label index="tx_promoshop_domain_model_bookingitem.quantity">Quantity</label>
+			<label index="tx_promoshop_domain_model_bookingitem.product">Product</label>
+			<label index="tx_promoshop_domain_model_bookingitem.booking">Booking</label>
+
+			<label index="tx_promoshop_domain_model_product">Product</label>
+			<label index="tx_promoshop_domain_model_product.title">Title</label>
+			<label index="tx_promoshop_domain_model_product.short_description">Short Description</label>
+			<label index="tx_promoshop_domain_model_product.long_description">Long Description</label>
+			<label index="tx_promoshop_domain_model_product.price">Price</label>
+			<label index="tx_promoshop_domain_model_product.quantity">Quantity</label>
+			<label index="tx_promoshop_domain_model_product.categorie">Categorie</label>
+			<label index="tx_promoshop_domain_model_product.image">Image</label>
+			<label index="tx_promoshop_domain_model_product.image.title">Image title</label>
+			<label index="tx_promoshop_domain_model_product.file">File</label>
+			<label index="tx_promoshop_domain_model_product.file.title">File title</label>
+			
+			<label index="tx_promoshop_domain_model_productcategorie">Product categorie</label>
+			<label index="tx_promoshop_domain_model_productcategorie.title">Title</label>
+			
+			<label index="tx_promoshop_domain_model_customer">Customer</label>
+			<label index="tx_promoshop_domain_model_customer.name">Name</label>
+			<label index="tx_promoshop_domain_model_customer.feuser">Feuser</label>
+			<label index="tx_promoshop_domain_model_customer.bookings">Bookings</label>
+			<label index="tx_promoshop_domain_model_customer.mobilnummer">Mobile phone number</label>
+			<label index="tx_promoshop_domain_model_customer.gender">Gender</label>
+			<label index="tx_promoshop_domain_model_customer.gender.1">Mr</label>
+			<label index="tx_promoshop_domain_model_customer.gender.2">Ms</label>
+			
+			<label index="fe_users.tx_extbase_type.Tx_Promoshop_Domain_Model_Customer">Promoshop customer</label>
+			
+			<label index="tx_promoshop_tabs.categories">Categorie</label>
+			<label index="tx_promoshop_palettes.image_settings">Image settings</label>
+
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_promoshop_domain_model_booking">Promoshop-Ausleihung</label>
+			<label index="tx_promoshop_domain_model_booking.delivery">Lieferart</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.fetch">Selbstabholung</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.deliver">Lieferung</label>
+			<label index="tx_promoshop_domain_model_booking.bookingitems">Leihartikel</label>
+			<label index="tx_promoshop_domain_model_booking.customer">Ausleiher</label>
+			<label index="tx_promoshop_domain_model_booking.gender">Anrede</label>
+			<label index="tx_promoshop_domain_model_booking.vbname">VB Name</label>
+			<label index="tx_promoshop_domain_model_booking.vbphone">VB Telefon</label>
+			<label index="tx_promoshop_domain_model_booking.file">PDF-Buchungsdokument</label>
+			<label index="tx_promoshop_domain_model_booking.destination">Lieferadresse</label>
+
+			<label index="tx_promoshop_domain_model_bookingitem">Promoshop-Leihartikel</label>
+			<label index="tx_promoshop_domain_model_bookingitem.quantity">Anzahl</label>
+			<label index="tx_promoshop_domain_model_bookingitem.product">Produkt</label>
+			<label index="tx_promoshop_domain_model_bookingitem.booking">Ausleihung</label>
+			
+			<label index="tx_promoshop_domain_model_product">Promoshop-Produkt</label>
+			<label index="tx_promoshop_domain_model_product.name">Name</label>
+			<label index="tx_promoshop_domain_model_product.short_description">Kurzbeschreibung</label>
+			<label index="tx_promoshop_domain_model_product.long_description">Ausführliche Beschreibung</label>
+			<label index="tx_promoshop_domain_model_product.price">Preis</label>
+			<label index="tx_promoshop_domain_model_product.quantity">Menge</label>
+			<label index="tx_promoshop_domain_model_product.categorie">Kategorie</label>
+			<label index="tx_promoshop_domain_model_product.image">Bild</label>
+			<label index="tx_promoshop_domain_model_product.image.title">Bildtitel</label>
+			<label index="tx_promoshop_domain_model_product.file">Datei</label>
+			<label index="tx_promoshop_domain_model_product.file.title">Dateititel</label>
+			
+			<label index="tx_promoshop_domain_model_productcategorie">Promoshop-Produktkategorie</label>
+			<label index="tx_promoshop_domain_model_productcategorie.title">Titel</label>
+
+			<label index="tx_promoshop_domain_model_customer">Kunde</label>
+			<label index="tx_promoshop_domain_model_customer.name">Name</label>
+			<label index="tx_promoshop_domain_model_customer.feuser">Feuser</label>
+			<label index="tx_promoshop_domain_model_customer.bookings">Ausleihungen</label>
+			<label index="tx_promoshop_domain_model_customer.mobile">Mobilnummer</label>
+			<label index="tx_promoshop_domain_model_customer.gender">Anrede</label>
+			<label index="tx_promoshop_domain_model_customer.gender.1">Herr</label>
+			<label index="tx_promoshop_domain_model_customer.gender.2">Frau</label>
+			
+			<label index="fe_users.tx_extbase_type.Tx_Promoshop_Domain_Model_Customer">Promoshop-Kunde</label>
+			
+			<label index="tx_promoshop_tabs.categories">Kategorie</label>
+			<label index="tx_promoshop_palettes.image_settings">Bildeinstellungen</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Vodafone Promoshop extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_promoshop_domain_model_booking">Booking</label>
+			<label index="tx_promoshop_domain_model_booking.delivery">Art der Lieferung.</label>
+			<label index="tx_promoshop_domain_model_booking.bookingitems">Booked item.</label>
+			<label index="tx_promoshop_domain_model_booking.customer">Customer that books.</label>
+			
+			<label index="tx_promoshop_domain_model_product">Product</label>
+			<label index="tx_promoshop_domain_model_product.title">The name of the product</label>
+			<label index="tx_promoshop_domain_model_product.short_description">A short description of the product.</label>
+			<label index="tx_promoshop_domain_model_product.long_description">A detailed description of the product.</label>
+			<label index="tx_promoshop_domain_model_product.price">The price of the product.</label>
+			<label index="tx_promoshop_domain_model_product.quantity">Amount</label>
+			<label index="tx_promoshop_domain_model_product.categorie">Related Categorie.</label>
+			<label index="tx_promoshop_domain_model_product.image">Product image.</label>
+			<label index="tx_promoshop_domain_model_product.file">Product related file.</label>
+			
+			<label index="tx_promoshop_domain_model_bookingitem">Bookingitem</label>
+			<label index="tx_promoshop_domain_model_bookingitem.quantity">Amount of items.</label>
+			<label index="tx_promoshop_domain_model_bookingitem.product">Booked product.</label>
+			<label index="tx_promoshop_domain_model_bookingitem.booking">booking</label>
+			<label index="tx_promoshop_domain_model_booking.bookingsets">Booked item.</label>
+			
+			<label index="tx_promoshop_domain_model_customer">Customer</label>
+			<label index="tx_promoshop_domain_model_customer.name">Name of the custumer.</label>
+			<label index="tx_promoshop_domain_model_customer.feuser">Related feueser for frontend login.</label>
+			<label index="tx_promoshop_domain_model_customer.bookings">All bookings of the customer.</label>
+			
+			<label index="tx_promoshop_domain_model_booking.username">The customer who books the products.</label>
+			<label index="tx_promoshop_domain_model_customer.feueser">Related feueser for frontend login.</label>
+			<label index="tx_promoshop_domain_model_customer.usertype">Type of  user.</label>
+			<label index="tx_promoshop_domain_model_customer.username">ID of this user.</label>
+			<label index="tx_promoshop_domain_model_promoshop">Booking promo equipment</label>
+		</languageKey>
+		
+		<languageKey index="de" type="array">
+			<label index="tx_promoshop_general_header.contact">Kontaktdaten und Lieferanschrift</label>
+			<label index="tx_promoshop_general_header.confirm">Ihre Angaben in der Übersicht</label>
+			<label index="tx_promoshop_general_header.booking">Ihre Bestellung</label>
+			<label index="tx_promoshop_general_segment.destination">Lieferanschrift</label>
+			<label index="tx_promoshop_general_segment.contact">Kontakt</label>
+			<label index="tx_promoshop_general_segment.bookingitems">Gebuchte Produkte</label>
+			<label index="tx_promoshop_general_segment.delivery">Lieferkonditionen</label>
+			<label index="tx_promoshop_general_segment.vb">Zuständiger VB</label>
+			<label index="tx_promoshop_general.name">Name</label>
+			<label index="tx_promoshop_general.phone">Telefon</label>
+			<label index="tx_promoshop_general.download">Datei herunterladen</label>
+			<label index="tx_promoshop_general.until">bis</label>
+			<label index="tx_promoshop_general_submit.back">Zurück</label>
+			<label index="tx_promoshop_general_submit.forward">Weiter</label>
+			<label index="tx_promoshop_general_submit.order">Bestellung absenden</label>
+			<label index="tx_promoshop_general_submit.contact">Weiter zur Eingabe der Kontaktdaten</label>
+			<label index="tx_promoshop_general.abg">Ausleihbedingungen</label>
+			<label index="tx_promoshop_general.abg.accept">Ich akzeptiere die Ausleihbedingungen</label>
+			<label index="tx_promoshop_general_time.confirm">Zeitwahl bestätigen!</label>
+			<label index="tx_promoshop_general_time.start">Startdatum</label>
+			<label index="tx_promoshop_general_time.end">Enddatum</label>
+			<label index="tx_promoshop_general_time.span">Zeitraum</label>
+			<label index="tx_promoshop_general_time.clock">Uhr</label>
+			<label index="tx_promoshop_general_note.required">Mit einem Stern* gekennzeichnete Felder sind Pflichtfelder.</label>
+			<label index="tx_promoshop_general_text.created">Vielen Dank, wir haben Ihre Reservierung entgegengenommen.
+			
+			Über den folgenden Link können Sie Ihr Bestellbestätigung im PDF-Format herunterladen:</label>
+			<label index="tx_promoshop_general_text.created.2">Damit Ihre Bestellung verbindlich wird, müssen Sie dieses Dokument ausdrucken und innerhalb von 5 Werktagen unterschrieben an die Nummer 030 - 13 89 34 27 faxen. Bitte bringen Sie Ihre unterschriebene Bestellbestätigung auch bei einer Abholung vor Ort mit.</label>
+			<label index="tx_promoshop_general_text.mailing">Zusätzlich erhalten Sie von uns eine Bestätigungs-E-Mail an die von Ihnen angegebene E-Mail-Adresse gesendet. Die E-Mail enthält als Anhang ebenfalls Ihre Bestellbestätigung als PDF-Dokument.</label>
+			<label index="tx_promoshop_general_text.mailerror">Leider konnten wie Ihnen keine Bestätigungs-E-Mail zusenden.</label>
+			<label index="tx_promoshop_general_text.alreadybooked">Ihre Reservierung haben wir bereits entgegengenommen. 
+			Falls Sie eine weitere Reservierung vornehmen möchten, melden Sie sich bitte ab und loggen sich erneut ein.</label>
+			<label index="tx_promoshop_plugin_setting_general">Allgemeine Einstellungen</label>
+			<label index="tx_promoshop_plugin_setting_adminmail">Admin E-Mail</label>
+			<label index="tx_promoshop_plugin_setting_filepath">Pfad zu Dateien (Voreinstellung: uploads/tx_promoshop/)</label>
+			<label index="tx_promoshop_plugin_setting_mailimage">Header-Bild für Bestätigungsmail (700x135px)</label>
+			<label index="tx_promoshop_plugin_setting_product.categorie">Produktkategorie</label>
+			<label index="tx_promoshop_plugin_setting_product.storagepid">Produktspeicherplatz (optional)</label>
+			
+			<label index="tx_promoshop_domain_model_booking">Ausleihung</label>
+			<label index="tx_promoshop_domain_model_booking.delivery">Art der Lieferung</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.1">Selbstabholung</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.2">Lieferung</label>
+			<label index="tx_promoshop_domain_model_booking.delivery.note">Für die Lieferung entstehen Zusatzkosten!</label>
+			<label index="tx_promoshop_domain_model_booking.timespan">Zeitraum</label>
+			<label index="tx_promoshop_domain_model_booking.bookingitems">Reservierte Produkte</label>
+			<label index="tx_promoshop_domain_model_booking.customer">Ausleihender</label>
+			<label index="tx_promoshop_domain_model_booking.username">Der Promoshop-Kunde</label>
+			<label index="tx_promoshop_domain_model_booking.vbname">VB Name</label>
+			<label index="tx_promoshop_domain_model_booking.vbphone">VB Telefon</label>
+			<label index="tx_promoshop_domain_model_booking.file">Bestellbestätigung (PDF)</label>
+			
+			<label index="tx_promoshop_domain_model_bookingitem">Bookingitem</label>
+			<label index="tx_promoshop_domain_model_bookingitem.quantity">Menge</label>
+			<label index="tx_promoshop_domain_model_bookingitem.product">Produkt</label>
+			<label index="tx_promoshop_domain_model_bookingitem.booking">Ausleihung</label>
+			
+			<label index="tx_promoshop_domain_model_product">Produkt</label>
+			<label index="tx_promoshop_domain_model_product.title">Produktname</label>
+			<label index="tx_promoshop_domain_model_product.short_description">Kurzbeschreibung</label>
+			<label index="tx_promoshop_domain_model_product.long_description">Ausführliche Beschreibung</label>
+			<label index="tx_promoshop_domain_model_product.price">Preis</label>
+			<label index="tx_promoshop_domain_model_product.quantity">Menge</label>
+			<label index="tx_promoshop_domain_model_product.categorie">Produktkategorie</label>
+			<label index="tx_promoshop_domain_model_product.image">Produktbild</label>
+			<label index="tx_promoshop_domain_model_product.file">Produkt-PDF</label>			
+			
+			<label index="tx_promoshop_domain_model_customer">Kunde</label>
+			<label index="tx_promoshop_domain_model_customer.username">Benutzername</label>
+			<label index="tx_promoshop_domain_model_customer.company">Firma</label>
+			<label index="tx_promoshop_domain_model_customer.gender">Anrede</label>
+			<label index="tx_promoshop_domain_model_customer.gender.1">Herr</label>
+			<label index="tx_promoshop_domain_model_customer.gender.2">Frau</label>
+			<label index="tx_promoshop_domain_model_customer.first_name">Vorname</label>
+			<label index="tx_promoshop_domain_model_customer.last_name">Nachname</label>
+			<label index="tx_promoshop_domain_model_customer.address">Straße</label>
+			<label index="tx_promoshop_domain_model_customer.zip">Postleitzahl</label>
+			<label index="tx_promoshop_domain_model_customer.city">Ort</label>
+			<label index="tx_promoshop_domain_model_customer.telephone">Telefon</label>
+			<label index="tx_promoshop_domain_model_customer.fax">Fax</label>
+			<label index="tx_promoshop_domain_model_customer.mobile">Mobilnummer</label>
+			<label index="tx_promoshop_domain_model_customer.email">E-Mail</label>
+		</languageKey>
+	</data>
+</T3locallang>
