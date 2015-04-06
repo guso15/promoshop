@@ -3,8 +3,8 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Guso.' . $_EXTKEY,
 	'Pi1',
 	array(
 		'Product' => 'index,list, show, new, create, edit, update, delete',
@@ -24,6 +24,6 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	)
 );
 
-$TYPO3_CONF_VARS['FE']['eID_include']['availableProducts'] = t3lib_extMgm::extPath($_EXTKEY).'Resources/Public/Scripts/Eid/class.tx_promoshop_eid_availableproducts.php';
+$TYPO3_CONF_VARS['FE']['eID_include']['availableProducts'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Resources/Public/Scripts/Eid/class.tx_promoshop_eid_availableproducts.php';
 
 ?>

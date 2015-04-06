@@ -1,4 +1,6 @@
 <?php
+namespace Guso\Promoshop\Service;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -28,7 +30,7 @@
  * @version $Id:$
  * @license http://opensource.org/licenses/gpl-license.php GNU protected License, version 2
  */
-class Tx_Promoshop_Service_AccessControlService implements t3lib_Singleton {
+class AccessControlService implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
 	 * Tests, if a person is logged into the frontend

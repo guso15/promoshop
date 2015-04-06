@@ -1,4 +1,7 @@
 <?php
+namespace Guso\Promoshop\Controller;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /***************************************************************
  *  Copyright notice
@@ -31,27 +34,63 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Promoshop_Controller_BookingController extends Tx_Extbase_MVC_Controller_ActionController {
+class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * bookingRepository
 	 *
-	 * @var Tx_Promoshop_Domain_Repository_BookingRepository
+	 * @var \Guso\Promoshop\Domain\Repository\BookingRepository
+	 *
+	 * @inject
 	 */
 	protected $bookingRepository;
 	
 	/**
 	 * customerRepository
 	 *
-	 * @var Tx_Promoshop_Domain_Repository_CustomerRepository
+	 * @var \Guso\Promoshop\Domain\Repository\CustomerRepository
+	 *
+	 * @inject
 	 */
 	protected $customerRepository;
 	
 	/**
-	 * The object repository
-	 * @var Tx_Promoshop_Domain_Repository_SessionRepository
+	 * categorieRepository
+	 *
+	 * @var \Guso\Promoshop\Domain\Repository\ProductcategorieRepository
+	 *
+	 * @inject
+	 */
+	protected $categorieRepository;
+	
+	/**
+	 * sessionRepository
+	 *
+	 * @var \Guso\Promoshop\Domain\Repository\SessionRepository
+	 *
+	 * @inject
 	 */
 	protected $sessionRepository = NULL;
+	
+	/**
+	 * @var \Guso\Promoshop\Service\AccessControlService
+	 *
+	 * @inject
+	 */
+	protected $accessControlService;
+	
+	/**
+	 * @var \Guso\Promoshop\Service\DateTimeService
+	 * @inject
+	 */
+	protected $dateService;
+	
+	/**
+	 * @var \Guso\Promoshop\Service\SettingsService
+	 *
+	 * @inject
+	 */
+	protected $settingsService;
 
 
 	/**
@@ -60,14 +99,14 @@ class Tx_Promoshop_Controller_BookingController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function initializeAction() {
-		$this->accessControlService = t3lib_div::makeInstance('Tx_Promoshop_Service_AccessControlService');
-		$this->dateService = t3lib_div::makeInstance('Tx_Promoshop_Service_DateTimeService');
-		$this->settingsService = t3lib_div::makeInstance('Tx_Promoshop_Service_SettingsService');
+		//$this->accessControlService = GeneralUtility::makeInstance('\Guso\Promoshop\Service\AccessControlService');
+		//$this->dateService = GeneralUtility::makeInstance('\Guso\Promoshop\Service\DateTimeService');
+		//$this->settingsService = GeneralUtility::makeInstance('\Guso\Promoshop\Service\SettingsService');
 		$this->persistence = $this->settingsService->getPersistanceSettings();
 		$this->storagePid = $this->persistence['storagePid'];
-		$this->customerRepository = t3lib_div::makeInstance('Tx_Promoshop_Domain_Repository_CustomerRepository');
-		$this->categorieRepository = t3lib_div::makeInstance('Tx_Promoshop_Domain_Repository_ProductcategorieRepository');
-		$this->sessionRepository = t3lib_div::makeInstance('Tx_Promoshop_Domain_Repository_SessionRepository');
+		//$this->customerRepository = GeneralUtility::makeInstance('\Guso\Promoshop\Domain\Repository\CustomerRepository');
+		//$this->categorieRepository = GeneralUtility::makeInstance('\Guso\Promoshop\Domain\Repository\ProductcategorieRepository');
+		//$this->sessionRepository = GeneralUtility::makeInstance('\Guso\Promoshop\Domain\Repository\SessionRepository');
 		$this->feUser = $GLOBALS['TSFE']->fe_user->user['uid'];
 		$this->baseUrl = $GLOBALS['TSFE']->config['config']['baseURL'];
 		$this->customer = $this->customerRepository->findByUid($this->feUser);
@@ -103,9 +142,6 @@ class Tx_Promoshop_Controller_BookingController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function newAction(Tx_Promoshop_Domain_Model_Booking $newBooking = NULL) {
-		
-		//debugster($this->args);
-		//exit();
 		
 		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($this->storagePid)) {
 			
@@ -162,10 +198,6 @@ class Tx_Promoshop_Controller_BookingController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function createAction(Tx_Promoshop_Domain_Model_Booking $newBooking = NULL, array $bookingitems = array()) {
-		
-		//debugster($this->args);
-		//exit();
-		
 		$isCreated = $this->sessionRepository->findBySession();
 
 		if (!$isCreated) {
@@ -275,8 +307,7 @@ class Tx_Promoshop_Controller_BookingController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function exitAction(Tx_Promoshop_Domain_Model_Booking $newBooking = NULL) {
-		//debugster($this->args);
-		//exit();
+
 		if (array_key_exists('backlink', $this->args)) {
 			$this->redirect('index', 'Product', NULL, array('args' => $this->args));
 		}
@@ -313,8 +344,7 @@ class Tx_Promoshop_Controller_BookingController extends Tx_Extbase_MVC_Controlle
 	 * @return Tx_Promoshop_Domain_Model_Booking The new booking 
 	 */
 	protected function createAndAddBookingitems(Tx_Promoshop_Domain_Model_Booking $booking, array $bookingitems = array(), $starttime = 0, $endtime = 0) {
-		//debugster($bookingitems);
-		//exit();
+
 		foreach ($bookingitems['quantity'] as $key => $quantity) {
 			if (!empty($quantity)) {
 				$booking->addBookingitem(new Tx_Promoshop_Domain_Model_Bookingitem($quantity, $bookingitems['product'][$key], $starttime, $endtime));

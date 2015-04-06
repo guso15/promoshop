@@ -1,4 +1,5 @@
 <?php
+namespace Guso\Promoshop\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -31,7 +32,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Promoshop_Domain_Model_Productcategorie extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Productcategorie extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * The name of the productcategorie

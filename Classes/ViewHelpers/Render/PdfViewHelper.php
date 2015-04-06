@@ -1,4 +1,9 @@
 <?php
+namespace Guso\Promoshop\ViewHelpers\Render;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility,
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -23,14 +28,14 @@
 ***************************************************************/
 
 //require_once(PATH_t3lib.'class.t3lib_befunc.php');
-require_once(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Scripts/Pdf/class.createPdf.php');
-require_once(PATH_t3lib.'class.t3lib_cs.php');
+require_once(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Scripts/Pdf/class.createPdf.php');
+//require_once(PATH_t3lib.'class.t3lib_cs.php');
 
  /**
  * View helper for rendering pdf output.
  */
 
-class Tx_Promoshop_ViewHelpers_Render_PdfViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 		
 	 /**
 	 * Render the supplied contents as a pdf
@@ -40,8 +45,8 @@ class Tx_Promoshop_ViewHelpers_Render_PdfViewHelper extends Tx_Fluid_Core_ViewHe
 	 */
     public function render($params = array()) {
     
-    	$productRepository = t3lib_div::makeInstance('Tx_Promoshop_Domain_Repository_ProductRepository');
-    	$dateService = t3lib_div::makeInstance('Tx_Promoshop_Service_DateTimeService');
+    	$productRepository = GeneralUtility::makeInstance('Tx_Promoshop_Domain_Repository_ProductRepository');
+    	$dateService = GeneralUtility::makeInstance('Tx_Promoshop_Service_DateTimeService');
     	
     	// Get the parameters
 		$customer =			$params['newBooking'];
@@ -71,7 +76,7 @@ class Tx_Promoshop_ViewHelpers_Render_PdfViewHelper extends Tx_Fluid_Core_ViewHe
 		$fromCharset = $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] ? $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] : 'iso-8859-1';
 		
 		// Convert to iso-8859-1
-		$cs = t3lib_div::makeInstance('t3lib_cs');
+		$cs = GeneralUtility::makeInstance('t3lib_cs');
 		$cs->convArray(&$customer, $fromCharset, 'iso-8859-1');
 		
 		define('EUR',chr(128));

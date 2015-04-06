@@ -1,4 +1,8 @@
 <?php
+namespace Guso\Promoshop\ViewHelpers\Render;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  *  Copyright notice
  *
@@ -10,7 +14,7 @@
  * Mail view helper. Sends emails and attaches files to the email
  * coming from TypoScript, Flexform and the Plugin content element.
  */
-class Tx_Promoshop_ViewHelpers_Render_MailViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
     /**
 	 * Render the supplied contents as an html email
@@ -19,12 +23,12 @@ class Tx_Promoshop_ViewHelpers_Render_MailViewHelper extends Tx_Fluid_Core_ViewH
 	 * @return void
 	 */
     public function render($params = array()) {
-    	$mail = t3lib_div::makeInstance('t3lib_mail_Message');
+    	$mail = GeneralUtility::makeInstance('t3lib_mail_Message');
     	
     	$customer =	$params['newBooking'];
     	$customerMail = $customer['email'];
     	
-    	if ($mail && t3lib_div::validEmail($customerMail)) {
+    	if ($mail && GeneralUtility::validEmail($customerMail)) {
     		
     		// Get the parameters
     		$baseUrl =		$params['baseUrl'];

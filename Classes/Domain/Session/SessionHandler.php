@@ -1,4 +1,6 @@
 <?php
+namespace Guso\Promoshop\Domain\Session;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -29,7 +31,7 @@
  * @package promoshop
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  **/
-class Tx_Promoshop_Domain_Session_SessionHandler implements t3lib_Singleton {
+class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
  
 	/**
 	 * Returns the object stored in the users PHP session

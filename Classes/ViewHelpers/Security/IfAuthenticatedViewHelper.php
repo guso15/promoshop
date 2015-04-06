@@ -1,4 +1,8 @@
 <?php
+namespace Guso\Promoshop\ViewHelpers\Security;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +29,15 @@
 /**
  * View helper for checking access rights.
  */
-class Tx_Promoshop_ViewHelpers_Security_IfAuthenticatedViewHelper extends Tx_Fluid_ViewHelpers_IfViewHelper {
+class IfAuthenticatedViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper {
+
+	/**
+	 * @var \Guso\Promoshop\Service\AccessControlService
+	 *
+	 * @inject
+	 */
+	protected $accessControlService;
+	
 
 	/**
 	 * Checks, if a frontend user is logged in
@@ -33,9 +45,9 @@ class Tx_Promoshop_ViewHelpers_Security_IfAuthenticatedViewHelper extends Tx_Flu
 	 * @return string The output
 	 */
 	public function render() {
-		$accessControllService = t3lib_div::makeInstance('Tx_Promoshop_Service_AccessControlService');
+		//$accessControllService = GeneralUtility::makeInstance('Tx_Promoshop_Service_AccessControlService');
 		$storagePid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_promoshop.']['persistence.']['storagePid'];
-		if ($accessControllService->hasLoggedInFrontendUserOnStoragePid($storagePid)) {
+		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($storagePid)) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

@@ -1,4 +1,6 @@
 <?php
+namespace Guso\Promoshop\Domain\Repository;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -30,19 +32,27 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Promoshop_Domain_Repository_SessionRepository extends Tx_Extbase_Persistence_Repository {
+class SessionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
  
 	/**
-	 * The session handler
-	 * @var Tx_Promoshop_Domain_Session_SessionHandler
+	 * sessionHandler
+	 *
+	 * @var \Guso\Promoshop\Domain\Session\SessionHandler
+	 *
+	 * @inject
 	 */
-	protected $sessionHandler = NULL;
- 
-	public function __construct() {
-		\TYPO3\CMS\Core\Utility\DebugUtility::debug($sessionHandler, 'Remove Escort Object');
+	protected $sessionHandler;
+ 	
+ 	/**
+	 * Init
+	 *
+	 * @return void
+	 */
+	public function initialize() {
+		//\TYPO3\CMS\Core\Utility\DebugUtility::debug($sessionHandler, 'Remove Escort Object');
 		//parent::__construct();
 		// get an instance of the session handler
-		//$this->sessionHandler = t3lib_div::makeInstance('Tx_Promoshop_Domain_Session_SessionHandler');
+		//$this->sessionHandler = GeneralUtility::makeInstance('Guso\Promoshop\Domain\Session\SessionHandler');
 	}
  
 	/**

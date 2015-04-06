@@ -1,4 +1,8 @@
 <?php
+namespace Guso\Promoshop\Service;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  *  Copyright notice
  *
@@ -10,7 +14,7 @@
  * Settings service. Provides access to the plugin settings
  * coming from TypoScript, Flexform and the Plugin content element.
  */
-class Tx_Promoshop_Service_SettingsService implements t3lib_Singleton {
+class SettingsService implements \TYPO3\CMS\Core\SingletonInterface {
 
    	/**
 	 * Initializes the configuration manager interface
@@ -18,11 +22,11 @@ class Tx_Promoshop_Service_SettingsService implements t3lib_Singleton {
 	 * @return void
 	 */
     public function init() {
-        $objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
+        $objectManager = GeneralUtility::makeInstance('Tx_Extbase_Object_ObjectManager');
 		$configurationManager = $objectManager->get('Tx_Extbase_Configuration_ConfigurationManagerInterface');
 		
 		$this->frameworkConfiguration = $configurationManager->getConfiguration(
-			Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+			\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
 		);
     }
 

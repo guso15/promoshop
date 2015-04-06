@@ -3,10 +3,10 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::registerPlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Pi1',
-	'Vodafone Promoshop'
+	'Promotionshop'
 );
 
 if (TYPO3_MODE === 'BE') {
@@ -14,7 +14,7 @@ if (TYPO3_MODE === 'BE') {
 	/**
 	 * Registers a Backend Module
 	 */
-	Tx_Extbase_Utility_Extension::registerModule(
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		$_EXTKEY,
 		'txeventplatformM1',	 // Make module a submodule of 'txeventplatformM1'
 		'promoshop',	// Submodule key
@@ -34,15 +34,15 @@ if (TYPO3_MODE === 'BE') {
 /**
  * Register Plugin as Page Content and register flexform
  */
-$extensionName = t3lib_div::underscoredToUpperCamelCase($_EXTKEY);
+$extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);
 $pluginSignature = strtolower($extensionName) . '_pi1';  
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:'.$_EXTKEY.'/Configuration/FlexForms/Flexform.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:'.$_EXTKEY.'/Configuration/FlexForms/Flexform.xml');
 
 /**
  * Register static Typoscript Template
  */
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Vodafone Promoshop');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Vodafone Promoshop');
 
 /*
  * Extend fe_user table
@@ -71,8 +71,8 @@ $tempColumns = array (
 );
 
 // Add new fields to fe_users
-t3lib_div::loadTCA("fe_users");
-t3lib_extMgm::addTCAcolumns("fe_users",$tempColumns,1);
+\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA("fe_users");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns("fe_users",$tempColumns,1);
 
 //$TCA['fe_users']['types']['Tx_Promoshop_Domain_Model_Customer'] = $TCA['fe_users']['types']['0'];
 $TCA['fe_users']['types']['Tx_Promoshop_Domain_Model_Customer'] = array('showitem' => '
@@ -87,8 +87,8 @@ $TCA['fe_users']['palettes']['4'] = array('showitem' => 'mobile,fax');
 
 array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], array('LLL:EXT:promoshop/Resources/Private/Language/locallang_db.xml:fe_users.tx_extbase_type.Tx_Promoshop_Domain_Model_Customer', 'Tx_Promoshop_Domain_Model_Customer'));
 
-			t3lib_extMgm::addLLrefForTCAdescr('tx_promoshop_domain_model_booking', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_booking.xml');
-			t3lib_extMgm::allowTableOnStandardPages('tx_promoshop_domain_model_booking');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_promoshop_domain_model_booking', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_booking.xml');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_promoshop_domain_model_booking');
 			$TCA['tx_promoshop_domain_model_booking'] = array(
 				'ctrl' => array(
 					'title'	=> 'LLL:EXT:promoshop/Resources/Private/Language/locallang_db.xml:tx_promoshop_domain_model_booking',
@@ -108,13 +108,13 @@ array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], ar
 						'starttime' => 'starttime',
 						'endtime' => 'endtime',
 					),
-					'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Booking.php',
-					'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_booking.gif'
+					'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Booking.php',
+					'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_booking.gif'
 				),
 			);
 
-			t3lib_extMgm::addLLrefForTCAdescr('tx_promoshop_domain_model_product', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_product.xml');
-			t3lib_extMgm::allowTableOnStandardPages('tx_promoshop_domain_model_product');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_promoshop_domain_model_product', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_product.xml');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_promoshop_domain_model_product');
 			$TCA['tx_promoshop_domain_model_product'] = array(
 				'ctrl' => array(
 					'title'	=> 'LLL:EXT:promoshop/Resources/Private/Language/locallang_db.xml:tx_promoshop_domain_model_product',
@@ -137,13 +137,13 @@ array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], ar
 						'starttime' => 'starttime',
 						'endtime' => 'endtime',
 					),
-					'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Product.php',
-					'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_product.gif'
+					'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Product.php',
+					'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_product.gif'
 				),
 			);
 
-			t3lib_extMgm::addLLrefForTCAdescr('tx_promoshop_domain_model_bookingitem', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_bookingitem.xml');
-			t3lib_extMgm::allowTableOnStandardPages('tx_promoshop_domain_model_bookingitem');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_promoshop_domain_model_bookingitem', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_bookingitem.xml');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_promoshop_domain_model_bookingitem');
 			$TCA['tx_promoshop_domain_model_bookingitem'] = array(
 				'ctrl' => array(
 					'title'	=> 'LLL:EXT:promoshop/Resources/Private/Language/locallang_db.xml:tx_promoshop_domain_model_bookingitem',
@@ -163,13 +163,13 @@ array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], ar
 						'starttime' => 'starttime',
 						'endtime' => 'endtime',
 					),
-					'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Bookingitem.php',
-					'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_bookingitem.gif'
+					'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Bookingitem.php',
+					'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_bookingitem.gif'
 				),
 			);
 			
-			t3lib_extMgm::addLLrefForTCAdescr('tx_promoshop_domain_model_productcategorie', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_productcategorie.xml');
-			t3lib_extMgm::allowTableOnStandardPages('tx_promoshop_domain_model_productcategorie');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_promoshop_domain_model_productcategorie', 'EXT:promoshop/Resources/Private/Language/locallang_csh_tx_promoshop_domain_model_productcategorie.xml');
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_promoshop_domain_model_productcategorie');
 			$TCA['tx_promoshop_domain_model_productcategorie'] = array(
 				'ctrl' => array(
 					'title'	=> 'LLL:EXT:promoshop/Resources/Private/Language/locallang_db.xml:tx_promoshop_domain_model_productcategorie',
@@ -190,8 +190,8 @@ array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], ar
 						'starttime' => 'starttime',
 						'endtime' => 'endtime',
 					),
-					'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Productcategorie.php',
-					'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_productcategorie.gif'
+					'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Productcategorie.php',
+					'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_productcategorie.gif'
 				),
 			);
 

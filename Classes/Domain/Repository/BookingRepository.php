@@ -1,4 +1,5 @@
 <?php
+namespace Guso\Promoshop\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -31,7 +32,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Promoshop_Domain_Repository_BookingRepository extends Tx_Extbase_Persistence_Repository {
+class BookingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
 ?>

@@ -1,4 +1,8 @@
 <?php
+namespace Guso\Promoshop\Service;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  *  Copyright notice
  *
@@ -9,7 +13,7 @@
 /**
  * Datetime service. Provides helper functions to convert date strings and timestamps.
  */
-class Tx_Promoshop_Service_DateTimeService implements t3lib_Singleton {
+class DateTimeService implements \TYPO3\CMS\Core\SingletonInterface {
 
    	/**
      * Returns a timestamp out from a given date string.
@@ -21,7 +25,7 @@ class Tx_Promoshop_Service_DateTimeService implements t3lib_Singleton {
     	if ($date !== NULL) {
 	    	// Converting the datetimestrings into timestamps	    	
 			$date = str_replace(array(" ", ":"), '.', $date);
-			$date = t3lib_div::trimExplode('.', $date);
+			$date = GeneralUtility::trimExplode('.', $date);
 
 			$date[3] == '00' ? $date3 = '0' : $date3 = $date[3];
 			$date[4] == '00' ? $date4 = '0' : $date4 = $date[4];

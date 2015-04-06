@@ -1,4 +1,8 @@
 <?php
+namespace Guso\Promoshop\Controller;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility,
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /***************************************************************
  *  Copyright notice
@@ -31,7 +35,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Promoshop_Controller_ProductController extends Tx_Extbase_MVC_Controller_ActionController {
+class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * productRepository
@@ -41,18 +45,41 @@ class Tx_Promoshop_Controller_ProductController extends Tx_Extbase_MVC_Controlle
 	protected $productRepository;
 	
 	/**
+	 * sessionRepository
+	 *
+	 * @var \Guso\Promoshop\Domain\Repository\SessionRepository
+	 *
+	 * @inject
+	 */
+	protected $sessionRepository = NULL;
+	
+	/**
+	 * @var \Guso\Promoshop\Service\SettingsService
+	 *
+	 * @inject
+	 */
+	protected $settingsService;
+	
+	/**
+	 * @var \Guso\Promoshop\Service\AccessControlService
+	 *
+	 * @inject
+	 */
+	protected $accessControlService;
+	
+	/**
 	 * Initializes the current action
 	 *
 	 * @return void
 	 */
 	public function initializeAction() {
-		/*$this->organizationRepository = t3lib_div::makeInstance('Tx_SjrOffers_Domain_Repository_OrganizationRepository');*/
+		/*$this->organizationRepository = GeneralUtility::makeInstance('Tx_SjrOffers_Domain_Repository_OrganizationRepository');*/
 		$this->args = $this->request->getArguments();
-		$this->settingsService = t3lib_div::makeInstance('Tx_Promoshop_Service_SettingsService');
-		$this->accessControlService = t3lib_div::makeInstance('Tx_Promoshop_Service_AccessControlService');
-		$this->sessionRepository = t3lib_div::makeInstance('Tx_Promoshop_Domain_Repository_SessionRepository');
-		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . t3lib_extMgm::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/jquery-ui-1.8.18.custom.css" />');
-		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . t3lib_extMgm::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />');
+		//$this->settingsService = GeneralUtility::makeInstance('Tx_Promoshop_Service_SettingsService');
+		//$this->accessControlService = GeneralUtility::makeInstance('Tx_Promoshop_Service_AccessControlService');
+		//$this->sessionRepository = GeneralUtility::makeInstance('Tx_Promoshop_Domain_Repository_SessionRepository');
+		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/jquery-ui-1.8.18.custom.css" />');
+		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />');
 		$this->baseUrl = $GLOBALS['TSFE']->config['config']['baseURL'];
 	}
 	
@@ -110,7 +137,7 @@ class Tx_Promoshop_Controller_ProductController extends Tx_Extbase_MVC_Controlle
 		}
 
 		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($storagePid)) {
-			$this->view->assign('products', $this->productRepository->findByCategorieAndPid(t3lib_div::intExplode(',', $this->settings['allowedProductCategories']), $productStoragePid));
+			$this->view->assign('products', $this->productRepository->findByCategorieAndPid(GeneralUtility::intExplode(',', $this->settings['allowedProductCategories']), $productStoragePid));
 		
 			$productCategorie = $this->settings['allowedProductCategories'];
 		
@@ -118,7 +145,7 @@ class Tx_Promoshop_Controller_ProductController extends Tx_Extbase_MVC_Controlle
 		
 			$this->view->assign('pluginSetup', $pluginSetup);
 		} else {
-			$this->flashMessages->add('Bitte loggen Sie sich ein.');
+			$this->flashMessageContainer->add('Bitte loggen Sie sich ein.');
 			$this->sessionRepository->cleanUpSession();
 		}
 	}
@@ -208,9 +235,9 @@ class Tx_Promoshop_Controller_ProductController extends Tx_Extbase_MVC_Controlle
 	 * @param Tx_Promoshop_Domain_Repository_ProductRepository $productRepository
 	 * @return void
 	 */
-	public function injectProductRepository(Tx_Promoshop_Domain_Repository_ProductRepository $productRepository) {
+	/*public function injectProductRepository(Tx_Promoshop_Domain_Repository_ProductRepository $productRepository) {
 		$this->productRepository = $productRepository;
-	}
+	}*/
 
 }
 ?>

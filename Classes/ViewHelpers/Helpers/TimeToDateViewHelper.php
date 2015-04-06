@@ -1,4 +1,6 @@
 <?php
+namespace Guso\Promoshop\ViewHelpers\Helpers;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 /**
  * View helper for converting timestamps into date strings.
  */
-class Tx_Promoshop_ViewHelpers_Helpers_TimeToDateViewHelper extends Tx_Fluid_ViewHelpers_IfViewHelper {
+class TimeToDateViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper {
 
 	/**
 	 * Converts a given timestamp into a date string

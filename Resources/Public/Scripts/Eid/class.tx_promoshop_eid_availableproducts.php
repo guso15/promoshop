@@ -115,6 +115,6 @@ class tx_promoshop_eid_availableproducts extends tslib_pibase {
 	}
 }
  
-$availableProducts = t3lib_div::makeInstance('tx_promoshop_eid_availableproducts');
+$availableProducts = GeneralUtility::makeInstance('tx_promoshop_eid_availableproducts');
 $availableProducts->main();
 ?>

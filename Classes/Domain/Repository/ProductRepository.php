@@ -1,4 +1,5 @@
 <?php
+namespace Guso\Promoshop\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -31,7 +32,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_Promoshop_Domain_Repository_ProductRepository extends Tx_Extbase_Persistence_Repository {
+class ProductRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	public function findByCategorieAndPid(array $categories, $pid = NULL) {
 		$query = $this->createQuery();
@@ -48,7 +49,7 @@ class Tx_Promoshop_Domain_Repository_ProductRepository extends Tx_Extbase_Persis
 			$query->matching($query->in('categorie', $categories));
 		}
 		$query->setOrderings(
-			array('title' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING)
+			array('title' => QueryInterface::ORDER_ASCENDING)
 		);
 		return $query->execute();
 	}

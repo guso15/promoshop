@@ -1,4 +1,5 @@
 <?php
+namespace Guso\Promoshop\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -32,10 +33,14 @@
  *
  */
 <?php
-class Tx_Promoshop_Controller_CustomerController extends Tx_Extbase_MVC_Controller_ActionController {
+class CustomerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * @var Tx_Extbase_Domain_Repository_FrontendUserRepository
+	 * userRepository
+	 *
+	 * @var \Extbase\Domain\Repository\FrontendUserRepository
+	 *
+	 * @inject
 	 */
 	protected $userRepository;
     
@@ -45,7 +50,7 @@ class Tx_Promoshop_Controller_CustomerController extends Tx_Extbase_MVC_Controll
 	 * @return void
 	 */
 	public function initializeAction() {
-		$this->userRepository = t3lib_div::makeInstance('Tx_Extbase_Domain_Repository_FrontendUserRepository');
+		//$this->userRepository = GeneralUtility::makeInstance('Tx_Extbase_Domain_Repository_FrontendUserRepository');
 	}
     
 	/**
