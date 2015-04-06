@@ -39,9 +39,10 @@ class Tx_Promoshop_Domain_Repository_SessionRepository extends Tx_Extbase_Persis
 	protected $sessionHandler = NULL;
  
 	public function __construct() {
-		parent::__construct();
+		\TYPO3\CMS\Core\Utility\DebugUtility::debug($sessionHandler, 'Remove Escort Object');
+		//parent::__construct();
 		// get an instance of the session handler
-		$this->sessionHandler = t3lib_div::makeInstance('Tx_Promoshop_Domain_Session_SessionHandler');
+		//$this->sessionHandler = t3lib_div::makeInstance('Tx_Promoshop_Domain_Session_SessionHandler');
 	}
  
 	/**
