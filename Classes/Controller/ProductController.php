@@ -40,7 +40,9 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * productRepository
 	 *
-	 * @var Tx_Promoshop_Domain_Repository_ProductRepository
+	 * @var \Guso\Promoshop\Domain\Repository\ProductRepository
+	 *
+	 * @inject
 	 */
 	protected $productRepository;
 	
@@ -75,19 +77,27 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function initializeAction() {
 		$this->args = $this->request->getArguments();
-		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/jquery-ui-1.8.18.custom.css" />');
-		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />');
+		
+		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/jquery-ui-1.8.18.custom.css" />
+		<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />');
+		
 		$this->baseUrl = $GLOBALS['TSFE']->config['config']['baseURL'];
 	}
-	
+
 	/**
 	 * action index
 	 *
 	 * @return void
 	 */
 	public function indexAction() {
-		$this->persistence = $this->settingsService->getPersistanceSettings();
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui.min.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui-timepicker-addon.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui-datepicker-opt.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery.fancybox-1.3.4.pack.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery.fancybox-enable.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery.availableProducts.js', NULL, FALSE, FALSE, '', TRUE);
 		
+		$this->persistence = $this->settingsService->getPersistanceSettings();
 		$selectedProducts = '';
 		
 		if (array_key_exists('args', $this->args)) {

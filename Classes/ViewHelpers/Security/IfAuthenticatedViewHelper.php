@@ -46,7 +46,7 @@ class IfAuthenticatedViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelpe
 	 */
 	public function render() {
 		$storagePid = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_promoshop.']['persistence.']['storagePid'];
-\TYPO3\CMS\Core\Utility\DebugUtility::debug($storagePid, 'Debug');
+
 		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($storagePid)) {
 			return $this->renderThenChild();
 		} else {

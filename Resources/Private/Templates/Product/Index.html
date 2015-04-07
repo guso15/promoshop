@@ -7,13 +7,6 @@
 <prs:security.ifAuthenticated>
 	<f:flashMessages />
 	<f:then>
-		<script type="text/javascript" src="{f:uri.resource(path:'Javascript/jquery.availableProducts.js')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'Javascript/jquery-ui-1.8.18.custom.min.js')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'Javascript/jquery-ui-timepicker-addon.js')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'Javascript/jquery-ui-datepicker-opt.js')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'Javascript/jquery.fancybox-1.3.4.pack.js')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'Javascript/jquery.fancybox-enable.js')}"></script>
-
 		<f:form action="new" controller="Booking" id="bookingform" name="{booking}" object="{booking}" arguments="{newCustomer : newCustomer}" method="post">
 			<div class="dateselector">
 				<span><f:translate key="tx_promoshop_general_time.start" />:</span> <f:form.textfield property="starttime" name="starttime" id="starttime" class="inputBorder datepicker" size="20" readonly="readonly" value="{starttime}" />

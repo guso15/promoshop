@@ -55,7 +55,7 @@ class AccessControlService implements \TYPO3\CMS\Core\SingletonInterface {
 	}
 	
 	public function hasLoggedInFrontendUser() {
-		return $GLOBALS['TSFE']->loginUser === 1 ? TRUE : FALSE;
+		return $GLOBALS['TSFE']->loginUser == 1 ? TRUE : FALSE;
 	}
 	
 	public function hasLoggedInFrontendUserOnStoragePid($storagePid = NULL) {
