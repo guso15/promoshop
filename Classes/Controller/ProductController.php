@@ -79,7 +79,8 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->args = $this->request->getArguments();
 		
 		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/jquery-ui-1.8.18.custom.css" />
-		<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />');
+		<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />
+		<script type="text/javascript" src="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-1.7.1.min.js" /></script>');
 		
 		$this->baseUrl = $GLOBALS['TSFE']->config['config']['baseURL'];
 	}
@@ -90,9 +91,9 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function indexAction() {
-		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui.min.js', NULL, FALSE, FALSE, '', TRUE);
-		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui-timepicker-addon.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui-1.8.18.custom.min.js', NULL, FALSE, FALSE, '', TRUE);
 		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui-datepicker-opt.js', NULL, FALSE, FALSE, '', TRUE);
+		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery-ui-timepicker-addon.js', NULL, FALSE, FALSE, '', TRUE);
 		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery.fancybox-1.3.4.pack.js', NULL, FALSE, FALSE, '', TRUE);
 		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery.fancybox-enable.js', NULL, FALSE, FALSE, '', TRUE);
 		$GLOBALS['TSFE']->getPageRenderer()->addJsFooterFile(ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Javascript/jquery.availableProducts.js', NULL, FALSE, FALSE, '', TRUE);
