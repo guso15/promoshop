@@ -1,6 +1,8 @@
 <?php
 namespace Guso\Promoshop\Domain\Repository;
 
+use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /***************************************************************
  *  Copyright notice
  *

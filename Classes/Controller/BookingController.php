@@ -99,14 +99,8 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function initializeAction() {
-		//$this->accessControlService = GeneralUtility::makeInstance('\Guso\Promoshop\Service\AccessControlService');
-		//$this->dateService = GeneralUtility::makeInstance('\Guso\Promoshop\Service\DateTimeService');
-		//$this->settingsService = GeneralUtility::makeInstance('\Guso\Promoshop\Service\SettingsService');
 		$this->persistence = $this->settingsService->getPersistanceSettings();
 		$this->storagePid = $this->persistence['storagePid'];
-		//$this->customerRepository = GeneralUtility::makeInstance('\Guso\Promoshop\Domain\Repository\CustomerRepository');
-		//$this->categorieRepository = GeneralUtility::makeInstance('\Guso\Promoshop\Domain\Repository\ProductcategorieRepository');
-		//$this->sessionRepository = GeneralUtility::makeInstance('\Guso\Promoshop\Domain\Repository\SessionRepository');
 		$this->feUser = $GLOBALS['TSFE']->fe_user->user['uid'];
 		$this->baseUrl = $GLOBALS['TSFE']->config['config']['baseURL'];
 		$this->customer = $this->customerRepository->findByUid($this->feUser);
@@ -126,22 +120,25 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action show
 	 *
-	 * @param $booking
+	 * @param \Guso\Promoshop\Domain\Model\Booking $booking
+	 *
 	 * @return void
 	 */
-	public function showAction(Tx_Promoshop_Domain_Model_Booking $booking) {
+	public function showAction(Booking $booking) {
 		$this->view->assign('booking', $booking);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param $newBooking
+	 * @param \Guso\Promoshop\Domain\Model\Booking $booking
+	 *
 	 * @dontvalidate $newBooking
 	 * @dontverifyrequesthash
+	 *
 	 * @return void
 	 */
-	public function newAction(Tx_Promoshop_Domain_Model_Booking $newBooking = NULL) {
+	public function newAction(Booking $booking) {
 		
 		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($this->storagePid)) {
 			
@@ -182,7 +179,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$this->view->assign('selectedProducts', $this->args['selectedProducts']);
 			}
 			
-			$this->view->assign('newBooking', $newBooking);
+			$this->view->assign('newBooking', $booking);
 			
 		} else {
 			$this->flashMessages->add('Bitte loggen Sie sich ein.');
@@ -193,11 +190,14 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * Creates a new booking
 	 *
-	 * @param $newBooking A fresh Booking object which has not yet been added to the repository
+	 * @param \Guso\Promoshop\Domain\Model\Booking $booking
+	 * A fresh Booking object which has not yet been added to the repository
+	 *
 	 * @param array $bookingitems An array of booked products.
+	 *
 	 * @return void
 	 */
-	public function createAction(Tx_Promoshop_Domain_Model_Booking $newBooking = NULL, array $bookingitems = array()) {
+	public function createAction(Booking $booking, array $bookingitems = array()) {
 		$isCreated = $this->sessionRepository->findBySession();
 
 		if (!$isCreated) {
@@ -213,12 +213,12 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			if ($isCreated) {
 				$this->view->assign('isCreated', $isCreated);
 			} else {
-				$starttime = $newBooking->getStarttime();
-				$endtime = $newBooking->getEndtime();
+				$starttime = $booking->getStarttime();
+				$endtime = $booking->getEndtime();
 
-				$newBooking = $this->createAndAddBookingitems($newBooking, $bookingitems, $starttime, $endtime);
-				$this->bookingRepository->add($newBooking);
-				$newBooking->setCustomer($this->customer);
+				$booking = $this->createAndAddBookingitems($booking, $bookingitems, $starttime, $endtime);
+				$this->bookingRepository->add($booking);
+				$booking->setCustomer($this->customer);
 				
 				$token = md5($this->args['__hmac']);
 				$this->sessionRepository->writeToSession($token);
@@ -242,7 +242,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$adminMail = $this->settings['adminMail'];
 				$mailHeaderImage = 'uploads/tx_promoshop/' . $this->settings['mailHeaderImage'];
 				
-				$newBooking->setFile($fileName);
+				$booking->setFile($fileName);
 				
 				$outputParams = array (
 									'newBooking' => $this->args['newBooking'],
@@ -291,6 +291,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * action delete
 	 *
 	 * @param $booking
+	 *
 	 * @return void
 	 */
 	public function deleteAction(Tx_Promoshop_Domain_Model_Booking $booking) {
@@ -302,18 +303,20 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action exit
 	 *
-	 * @param $newBooking
+	 * @param \Guso\Promoshop\Domain\Model\Booking $booking
+	 * 
 	 * @dontverifyrequesthash
+	 *
 	 * @return void
 	 */
-	public function exitAction(Tx_Promoshop_Domain_Model_Booking $newBooking = NULL) {
+	public function exitAction(Booking $booking) {
 
 		if (array_key_exists('backlink', $this->args)) {
 			$this->redirect('index', 'Product', NULL, array('args' => $this->args));
 		}
 		
 		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($this->storagePid)) {
-			$this->view->assign('newBooking', $newBooking);
+			$this->view->assign('newBooking', $booking);
 			$this->view->assign('customer', $this->args['newBooking']);
 			$this->view->assign('bookingitems', $this->args['selectedProducts']);
 		} else {
@@ -327,30 +330,32 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * injectBookingRepository
 	 *
-	 * @param Tx_Promoshop_Domain_Repository_BookingRepository $bookingRepository
+	 * @param \Guso\Promoshop\Domain\Model\BookingRepository $bookingRepository
+	 *
 	 * @return void
 	 */
-	public function injectBookingRepository(Tx_Promoshop_Domain_Repository_BookingRepository $bookingRepository) {
+	public function injectBookingRepository(BookingRepository $bookingRepository) {
 		$this->bookingRepository = $bookingRepository;
 	}
 	
 	/**
 	 * Creates a BookingItem for every item in the bookingItems array and adds it to the booking.
 	 *
-	 * @param Tx_Promoshop_Domain_Model_Booking $booking The booking the booking items should be added to
+	 * @param \Guso\Promoshop\Domain\Model\Booking $booking The booking the booking items should be added to 
 	 * @param array $bookingitems An array of booking items
 	 * @param integer $starttime A timestamp for starttime
 	 * @param integer $endtime A timestamp for endtime
+	 *
 	 * @return Tx_Promoshop_Domain_Model_Booking The new booking 
 	 */
-	protected function createAndAddBookingitems(Tx_Promoshop_Domain_Model_Booking $booking, array $bookingitems = array(), $starttime = 0, $endtime = 0) {
+	protected function createAndAddBookingitems(Booking $booking, $bookingitems = array(), $starttime = 0, $endtime = 0) {
 
 		foreach ($bookingitems['quantity'] as $key => $quantity) {
 			if (!empty($quantity)) {
-				$booking->addBookingitem(new Tx_Promoshop_Domain_Model_Bookingitem($quantity, $bookingitems['product'][$key], $starttime, $endtime));
+				$booking->addBookingitem(new \Guso\Promoshop\Domain\Model\Bookingitem($quantity, $bookingitems['product'][$key], $starttime, $endtime));
 			}
 		}
-		//exit();
+
 		return $booking;
 	}
 

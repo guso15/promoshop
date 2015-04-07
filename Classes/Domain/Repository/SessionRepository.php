@@ -42,18 +42,7 @@ class SessionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @inject
 	 */
 	protected $sessionHandler;
- 	
- 	/**
-	 * Init
-	 *
-	 * @return void
-	 */
-	public function initialize() {
-		//\TYPO3\CMS\Core\Utility\DebugUtility::debug($sessionHandler, 'Remove Escort Object');
-		//parent::__construct();
-		// get an instance of the session handler
-		//$this->sessionHandler = GeneralUtility::makeInstance('Guso\Promoshop\Domain\Session\SessionHandler');
-	}
+
  
 	/**
 	 * Returns the token stored in the users PHP session

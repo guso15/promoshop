@@ -47,32 +47,35 @@ class ProductcategorieController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 	/**
 	 * action show
 	 *
-	 * @param $productcategorie
+	 * @param \Guso\Promoshop\Domain\Model\Productcategorie $productcategorie
+	 *
 	 * @return void
 	 */
-	public function showAction(Tx_Promoshop_Domain_Model_Productcategorie $productcategorie) {
+	public function showAction(Productcategorie $productcategorie) {
 		$this->view->assign('productcategorie', $productcategorie);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param $newProductcategorie
+	 * @param \Guso\Promoshop\Domain\Model\Productcategorie $productcategorie
 	 * @dontvalidate $newProductcategorie
+	 *
 	 * @return void
 	 */
-	public function newAction(Tx_Promoshop_Domain_Model_Productcategorie $newProductcategorie = NULL) {
-		$this->view->assign('newProductcategorie', $newProductcategorie);
+	public function newAction(Productcategorie $productcategorie) {
+		$this->view->assign('newProductcategorie', $productcategorie);
 	}
 
 	/**
 	 * action create
 	 *
-	 * @param $newProductcategorie
+	 * @param \Guso\Promoshop\Domain\Model\Productcategorie $productcategorie
+	 *
 	 * @return void
 	 */
-	public function createAction(Tx_Promoshop_Domain_Model_Productcategorie $newProductcategorie) {
-		$this->productcategorieRepository->add($newProductcategorie);
+	public function createAction(Productcategorie $productcategorie) {
+		$this->productcategorieRepository->add($productcategorie);
 		$this->flashMessageContainer->add('Your new Productcategorie was created.');
 		$this->redirect('list');
 	}
@@ -80,20 +83,22 @@ class ProductcategorieController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 	/**
 	 * action edit
 	 *
-	 * @param $productcategorie
+	 * @param \Guso\Promoshop\Domain\Model\Productcategorie $productcategorie
+	 *
 	 * @return void
 	 */
-	public function editAction(Tx_Promoshop_Domain_Model_Productcategorie $productcategorie) {
+	public function editAction(Productcategorie $productcategorie) {
 		$this->view->assign('productcategorie', $productcategorie);
 	}
 
 	/**
 	 * action update
 	 *
-	 * @param $productcategorie
+	 * @param \Guso\Promoshop\Domain\Model\Productcategorie $productcategorie
+	 *
 	 * @return void
 	 */
-	public function updateAction(Tx_Promoshop_Domain_Model_Productcategorie $productcategorie) {
+	public function updateAction(Productcategorie $productcategorie) {
 		$this->productcategorieRepository->update($productcategorie);
 		$this->flashMessageContainer->add('Your Productcategorie was updated.');
 		$this->redirect('list');
@@ -102,10 +107,11 @@ class ProductcategorieController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 	/**
 	 * action delete
 	 *
-	 * @param $productcategorie
+	 * @param \Guso\Promoshop\Domain\Model\Productcategorie $productcategorie
+	 *
 	 * @return void
 	 */
-	public function deleteAction(Tx_Promoshop_Domain_Model_Productcategorie $productcategorie) {
+	public function deleteAction(Productcategorie $productcategorie) {
 		$this->productcategorieRepository->remove($productcategorie);
 		$this->flashMessageContainer->add('Your Productcategorie was removed.');
 		$this->redirect('list');

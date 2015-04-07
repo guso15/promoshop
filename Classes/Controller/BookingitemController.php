@@ -48,31 +48,35 @@ class BookingitemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	 * action show
 	 *
 	 * @param $bookingitem
+	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
+	 *
 	 * @return void
 	 */
-	public function showAction(Tx_Promoshop_Domain_Model_Bookingitem $bookingitem) {
+	public function showAction(Bookingitem $bookingitem) {
 		$this->view->assign('bookingitem', $bookingitem);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param $newBookingitem
+	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
 	 * @dontvalidate $newBookingitem
+	 *
 	 * @return void
 	 */
-	public function newAction(Tx_Promoshop_Domain_Model_Bookingitem $newBookingitem = NULL) {
-		$this->view->assign('newBookingitem', $newBookingitem);
+	public function newAction(Bookingitem $bookingitem = NULL) {
+		$this->view->assign('newBookingitem', $bookingitem);
 	}
 
 	/**
 	 * action create
 	 *
-	 * @param $newBookingitem
+	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
+	 *
 	 * @return void
 	 */
-	public function createAction(Tx_Promoshop_Domain_Model_Bookingitem $newBookingitem) {
-		$this->bookingitemRepository->add($newBookingitem);
+	public function createAction(Bookingitem $bookingitem) {
+		$this->bookingitemRepository->add($bookingitem);
 		$this->flashMessageContainer->add('Your new Bookingitem was created.');
 		$this->redirect('list');
 	}
@@ -90,10 +94,11 @@ class BookingitemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	/**
 	 * action update
 	 *
-	 * @param $bookingitem
+	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
+	 *
 	 * @return void
 	 */
-	public function updateAction(Tx_Promoshop_Domain_Model_Bookingitem $bookingitem) {
+	public function updateAction(Bookingitem $bookingitem) {
 		$this->bookingitemRepository->update($bookingitem);
 		$this->flashMessageContainer->add('Your Bookingitem was updated.');
 		$this->redirect('list');
@@ -102,10 +107,11 @@ class BookingitemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	/**
 	 * action delete
 	 *
-	 * @param $bookingitem
+	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
+	 *
 	 * @return void
 	 */
-	public function deleteAction(Tx_Promoshop_Domain_Model_Bookingitem $bookingitem) {
+	public function deleteAction(Bookingitem $bookingitem) {
 		$this->bookingitemRepository->remove($bookingitem);
 		$this->flashMessageContainer->add('Your Bookingitem was removed.');
 		$this->redirect('list');

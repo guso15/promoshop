@@ -96,7 +96,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		
     	$pdf = new createPdf();
     	
-    	$pagecount = $pdf->setSourceFile(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Files/Promoshop.pdf'); 
+    	$pagecount = $pdf->setSourceFile(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Files/Promoshop.pdf'); 
     	
 		$tplidx = $pdf->importPage(1, '/MediaBox');
 		
@@ -194,16 +194,16 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		// Set a partial template
 		// Get the actual vertical position
 		$boxY = $pdf->getY();
-		$pagecount = $pdf->setSourceFile(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Files/PromoshopEof.pdf'); 
+		$pagecount = $pdf->setSourceFile(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Files/PromoshopEof.pdf'); 
 		$tplidx = $pdf->importPage(1, '/MediaBox');
 		$pdf->useTemplate($tplidx, 1, $boxY+8);
 		
 		// Set a new page template
 		$shop2 = strpos($shopname, 'ollenberg');
 		if ($shop2 === false) {
-			$pagecount = $pdf->setSourceFile(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Files/PromoshopAbg.pdf');
+			$pagecount = $pdf->setSourceFile(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Files/PromoshopAbg.pdf');
 		} else {
-			$pagecount = $pdf->setSourceFile(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Files/PromoshopBAbg.pdf');
+			$pagecount = $pdf->setSourceFile(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Files/PromoshopBAbg.pdf');
 		}
 		$tplidx = $pdf->importPage(1, '/MediaBox');
 		$pdf->addPage(); 

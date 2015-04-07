@@ -67,17 +67,14 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	protected $accessControlService;
 	
+	
 	/**
 	 * Initializes the current action
 	 *
 	 * @return void
 	 */
 	public function initializeAction() {
-		/*$this->organizationRepository = GeneralUtility::makeInstance('Tx_SjrOffers_Domain_Repository_OrganizationRepository');*/
 		$this->args = $this->request->getArguments();
-		//$this->settingsService = GeneralUtility::makeInstance('Tx_Promoshop_Service_SettingsService');
-		//$this->accessControlService = GeneralUtility::makeInstance('Tx_Promoshop_Service_AccessControlService');
-		//$this->sessionRepository = GeneralUtility::makeInstance('Tx_Promoshop_Domain_Repository_SessionRepository');
 		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/jquery-ui-1.8.18.custom.css" />');
 		$this->response->addAdditionalHeaderData('<link rel="stylesheet" type="text/css" href="' . ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey()) . 'Resources/Public/Styles/Fancybox/jquery.fancybox-1.3.4.css" />');
 		$this->baseUrl = $GLOBALS['TSFE']->config['config']['baseURL'];
@@ -163,33 +160,38 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action show
 	 *
-	 * @param $product
+	 * @param \Guso\Promoshop\Domain\Model\Product $product
+	 *
 	 * @dontvalidate $product
+	 *
 	 * @return void
 	 */
-	public function showAction(Tx_Promoshop_Domain_Model_Product $product) {
+	public function showAction(Product $product) {
 		$this->view->assign('product', $product);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param $newProduct
+	 * @param \Guso\Promoshop\Domain\Model\Product $product
+	 *
 	 * @dontvalidate $newProduct
+	 *
 	 * @return void
 	 */
-	public function newAction(Tx_Promoshop_Domain_Model_Product $newProduct = NULL) {
-		$this->view->assign('newProduct', $newProduct);
+	public function newAction(Product $product = NULL) {
+		$this->view->assign('newProduct', $product);
 	}
 
 	/**
 	 * action create
 	 *
-	 * @param $newProduct
+	 * @param \Guso\Promoshop\Domain\Model\Product $product
+	 *
 	 * @return void
 	 */
-	public function createAction(Tx_Promoshop_Domain_Model_Product $newProduct) {
-		$this->productRepository->add($newProduct);
+	public function createAction(Product $product) {
+		$this->productRepository->add($product);
 		$this->flashMessageContainer->add('Your new Product was created.');
 		$this->redirect('list');
 	}
@@ -197,21 +199,24 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action edit
 	 *
-	 * @param $product
+	 * @param \Guso\Promoshop\Domain\Model\Product $product
+	 *
 	 * @dontvalidate $product
+	 *
 	 * @return void
 	 */
-	public function editAction(Tx_Promoshop_Domain_Model_Product $product) {
+	public function editAction(Product $product) {
 		$this->view->assign('product', $product);
 	}
 
 	/**
 	 * action update
 	 *
-	 * @param $product
+	 * @param \Guso\Promoshop\Domain\Model\Product $product
+	 *
 	 * @return void
 	 */
-	public function updateAction(Tx_Promoshop_Domain_Model_Product $product) {
+	public function updateAction(Product $product) {
 		$this->productRepository->update($product);
 		$this->flashMessageContainer->add('Your Product was updated.');
 		$this->redirect('list');
@@ -220,24 +225,15 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action delete
 	 *
-	 * @param $product
+	 * @param \Guso\Promoshop\Domain\Model\Product $product
+	 *
 	 * @return void
 	 */
-	public function deleteAction(Tx_Promoshop_Domain_Model_Product $product) {
+	public function deleteAction(Product $product) {
 		$this->productRepository->remove($product);
 		$this->flashMessageContainer->add('Your Product was removed.');
 		$this->redirect('list');
 	}
-
-	/**
-	 * injectProductRepository
-	 *
-	 * @param Tx_Promoshop_Domain_Repository_ProductRepository $productRepository
-	 * @return void
-	 */
-	/*public function injectProductRepository(Tx_Promoshop_Domain_Repository_ProductRepository $productRepository) {
-		$this->productRepository = $productRepository;
-	}*/
 
 }
 ?>

@@ -61,14 +61,14 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Booked item.
 	 *
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Promoshop_Domain_Model_Bookingitem>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem>
 	 */
 	protected $bookingitems;
 
 	/**
 	 * The customer who books the products.
 	 *
-	 * @var Tx_Extbase_Domain_Model_FrontendUser
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 */
 	protected $customer;
 	
@@ -185,7 +185,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Initializes all Tx_Extbase_Persistence_ObjectStorage properties.
+	 * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
 	 *
 	 * @return void
 	 */
@@ -195,7 +195,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->bookingitems = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->bookingitems = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 	
 	/**
@@ -267,7 +267,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the customer
 	 *
-	 * @return Tx_Extbase_Domain_Model_FrontendUser customer
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 */
 	public function getCustomer() {
 		return $this->customer;
@@ -276,10 +276,10 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the customer
 	 *
-	 * @param Tx_Extbase_Domain_Model_FrontendUser $customer
-	 * @return Tx_Extbase_Domain_Model_FrontendUser customer
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $customer
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser customer
 	 */
-	public function setCustomer(Tx_Extbase_Domain_Model_FrontendUser $customer) {
+	public function setCustomer(FrontendUser $customer) {
 		$this->customer = $customer;
 	}
 	
@@ -555,10 +555,11 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Adds a Bookingitem
 	 *
-	 * @param Tx_Promoshop_Domain_Model_Bookingitem $bookingitem
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Promoshop_Domain_Model_Bookingitem> bookingitems
+	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitem
 	 */
-	public function addBookingitem(Tx_Promoshop_Domain_Model_Bookingitem $bookingitem) {
+	public function addBookingitem(Bookingitem $bookingitem) {
 		$this->bookingitems->attach($bookingitem);
 	}
 
@@ -566,16 +567,17 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Removes a Bookingitem
 	 *
 	 * @param Tx_Promoshop_Domain_Model_Bookingitem $bookingitemToRemove The Bookingitem to be removed
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Promoshop_Domain_Model_Bookingitem> bookingitems
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitems
 	 */
-	public function removeBookingitem(Tx_Promoshop_Domain_Model_Bookingitem $bookingitemToRemove) {
+	public function removeBookingitem(Bookingitem $bookingitemToRemove) {
 		$this->bookingitems->detach($bookingitemToRemove);
 	}
 
 	/**
 	 * Returns the Bookingitems
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Promoshop_Domain_Model_Bookingitem> bookingitems
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitems
 	 */
 	public function getBookingitems() {
 		return $this->bookingitems;
@@ -584,10 +586,11 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the Bookingitems
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Promoshop_Domain_Model_Bookingitem> $bookingitems
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Promoshop_Domain_Model_Bookingitem> bookingitems
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> $bookingitems
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitems
 	 */
-	public function setBookingitems(Tx_Extbase_Persistence_ObjectStorage $bookingitems) {
+	public function setBookingitems(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $bookingitems) {
 		$this->bookingitems = $bookingitems;
 	}
 

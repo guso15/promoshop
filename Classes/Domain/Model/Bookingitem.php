@@ -102,7 +102,7 @@ class Bookingitem extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the product
 	 *
-	 * @return Tx_Promoshop_Domain_Model_Product $product
+	 * @return \Guso\Promoshop\Domain\Model\Product $product
 	 */
 	public function getProduct() {
 		return $this->product;
