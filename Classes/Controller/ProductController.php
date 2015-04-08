@@ -245,6 +245,17 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->flashMessageContainer->add('Your Product was removed.');
 		$this->redirect('list');
 	}
+	
+	/**
+	 * action show available products
+	 *
+	 * @return void
+	 */
+	public function availableProducts() {
+		$result = 'ola';
+		
+		echo json_encode($result);
+	}
 
 }
 ?>

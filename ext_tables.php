@@ -16,8 +16,8 @@ if (TYPO3_MODE === 'BE') {
 	 */
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		$_EXTKEY,
-		'txeventplatformM1',	 // Make module a submodule of 'txeventplatformM1'
-		'promoshop',	// Submodule key
+		'txeventplatformM1',	// Make module a submodule of 'txeventplatformM1'
+		'promoshop',			// Submodule key
 		'',						// Position
 		array(
 			'Booking' => 'list, show, new, create, edit, update, delete','Product' => 'list, show, new, create, edit, update, delete','Bookingitem' => 'list, show, new, create, edit, update, delete','Productcategorie' => 'list, show, new, create, edit, update, delete',

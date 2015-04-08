@@ -42,7 +42,6 @@ tslib_eidtools::connectDB(); //Connect to database
 class tx_promoshop_eid_availableproducts extends tslib_pibase {
  
      function main() {
- 		alert('ola');
 		//$this->feUserObject = tslib_eidtools::initFeUser();
 		//$this->TSFEObject = tslib_eidtools::getTSFE();
 		

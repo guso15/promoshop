@@ -124,6 +124,9 @@
     						});
     						$.showSubmitButton();
 						}
+					},
+					error: function(error) {
+						alert('Error');
 					}
 				});
 			}

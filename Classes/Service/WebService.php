@@ -1,73 +1,38 @@
 <?php
-if (!defined ('PATH_typo3conf')) die ('Could not access this script directly!');
+namespace Guso\Promoshop\Service;
 
-#
-/***************************************************************
-#
-*  Copyright notice
-#
-*
-#
-*  (c) 2012 Guenter Sommer <sommer@agentur-milchmaedchen.de>
-#
-*
-#
-*  All rights reserved
-#
-*
-#
-*  This copyright notice MUST APPEAR in all copies of the script!
-#
-***************************************************************/
-#
+use \TYPO3\CMS\Core\Utility\GeneralUtility,
+	\TYPO3\CMS\Core\Utility\DebugUtility;
+
+class WebService implements \TYPO3\CMS\Core\SingletonInterface {
  
-#
-/**
-#
- * This class could called with AJAX via eID
-#
- *
-#
- * @author      Guenter Sommer <sommer@agentur-milchmaedchen.de>
-#
- * @package     TYPO3
-#
- * @subpackage  tx_promoshop
-#
- */
-
-//require_once(PATH_tslib.'class.tslib_pibase.php');
-tslib_eidtools::connectDB(); //Connect to database
-
-class tx_promoshop_eid_availableproducts extends tslib_pibase {
- 
-     function main() {
- 		alert('ola');
+     function handle() {
+ 		//alert('ola');
 		//$this->feUserObject = tslib_eidtools::initFeUser();
 		//$this->TSFEObject = tslib_eidtools::getTSFE();
-		
+
  		$output = NULL;
  		
- 		$storagePid = t3lib_div::_GP('storagePid');
- 		$productStoragePid = t3lib_div::_GP('productStoragePid');
-		$productCategorie = t3lib_div::_GP('productCategorie');
+ 		$storagePid = GeneralUtility::_GP('storagePid');
+ 		$productStoragePid = GeneralUtility::_GP('productStoragePid');
+		$productCategorie = GeneralUtility::_GP('productCategorie');
 		
 		// Converting the datetimestrings into timestamps
-		$starttime = t3lib_div::_GP('starttime');
-		$endtime = t3lib_div::_GP('endtime');
+		$starttime = GeneralUtility::_GP('starttime');
+		$endtime = GeneralUtility::_GP('endtime');
 		
 		$start = $starttime;
 		$end = $endtime;
 
 		$starttime = str_replace(array(" ", ":"), '.', $starttime);
-		$starttime = t3lib_div::trimExplode('.', $starttime);
+		$starttime = GeneralUtility::trimExplode('.', $starttime);
 		$starttime[3] == '00' ? $starttime3 = '0' : $starttime3 = $starttime[3];
 		$starttime[4] == '00' ? $starttime4 = '0' : $starttime4 = $starttime[4];
 		$starttime0 = str_replace('0', '', $starttime[0]);
 		$starttime1 = str_replace('0', '', $starttime[1]);
 		
 		$endtime = str_replace(array(" ", ":"), '.', $endtime);
-		$endtime = t3lib_div::trimExplode('.', $endtime);
+		$endtime = GeneralUtility::trimExplode('.', $endtime);
 		$endtime[3] == '00' ? $endtime3 = '0' : $endtime3 = $endtime[3];
 		$endtime[4] == '00' ? $endtime4 = '0' : $endtime4 = $endtime[4];
 		$endtime0 = str_replace('0', '', $endtime[0]);
@@ -99,22 +64,20 @@ class tx_promoshop_eid_availableproducts extends tslib_pibase {
 		
 		$respond2 = '';
 		if (empty($start)) {
-			$respond1 = '<span style="color: red;">Bitte Startdatum wählen.</span>';
+			$respond1 = '<span style="color: red;">Bitte Startdatum wählen.</span>' . $start;
 		} elseif (empty($end)) {
 			$respond1 = '<span style="color: red;">Bitte Enddatum wählen.</span>';
 		} else {
-			$respond1 = 'Gewählter Zeitraum: ' . t3lib_div::_GP('starttime');
-			$respond1 .= ' Uhr bis ' . t3lib_div::_GP('endtime') . ' Uhr.';
+			$respond1 = 'Gewählter Zeitraum: ' . GeneralUtility::_GP('starttime');
+			$respond1 .= ' Uhr bis ' . GeneralUtility::_GP('endtime') . ' Uhr.';
 			$respond2 = $productarr;
 		}
 		
 		
   		$output = array($respond1,$respond2);
-  		
+  		//echo 'pola';
   		echo json_encode($output);
 	}
 }
- 
-$availableProducts = GeneralUtility::makeInstance('tx_promoshop_eid_availableproducts');
-$availableProducts->main();
+
 ?>
