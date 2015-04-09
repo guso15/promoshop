@@ -22,8 +22,8 @@ class SettingsService implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return void
 	 */
     public function init() {
-        $objectManager = GeneralUtility::makeInstance('Tx_Extbase_Object_ObjectManager');
-		$configurationManager = $objectManager->get('Tx_Extbase_Configuration_ConfigurationManagerInterface');
+        $objectManager = GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
+		$configurationManager = $objectManager->get('\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
 		
 		$this->frameworkConfiguration = $configurationManager->getConfiguration(
 			\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
