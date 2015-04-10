@@ -36,11 +36,15 @@ class Customer extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 
     /**
      * @var string
+     *
+     * @validate NotEmpty
      */
     protected $firstName;
 
     /**
      * @var string
+     *
+     * @validate NotEmpty
      */
     protected $lastName;
     

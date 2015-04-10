@@ -1,8 +1,6 @@
 <?php
 namespace Guso\Promoshop\ViewHelpers\Helpers;
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /***************************************************************
 *  Copyright notice
 *
@@ -30,7 +28,17 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  * View helper to display the booked product.
  */
 class GetBookedProductViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper {
-
+	
+	/**
+	 * productRepository
+	 *
+	 * @var \Guso\Promoshop\Domain\Repository\ProductRepository
+	 *
+	 * @inject
+	 */
+	protected $productRepository;
+	
+	
 	/**
 	 * Displays a booked product
 	 *
@@ -38,10 +46,7 @@ class GetBookedProductViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelp
 	 * @return string Product title
 	 */
 	public function render($product) {
-		
-		$productRepository = GeneralUtility::makeInstance('Tx_Promoshop_Domain_Repository_ProductRepository');
-		
-		$product = $productRepository->findByUid($product);
+		$product = $this->productRepository->findByUid($product);
 		$product = $product->getTitle();
 				
 		return $product;

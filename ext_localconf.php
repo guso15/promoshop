@@ -9,18 +9,18 @@ if (!defined('TYPO3_MODE')) {
 	array(
 		'Product' => 'index,list, show, new, create, edit, update, delete',
 		'Productcategorie' => 'list, show, new, create, edit, update, delete',
-		'Booking' => 'new,list, show, exit, create, edit, update, delete',
+		'Booking' => 'new, list, show, exit, create, edit, update, delete',
 		'Bookingitem' => 'list, show, new, create, edit, update, delete',
 		'Customer' => 'list'
 		
 	),
 	// non-cacheable actions
 	array(
-		'Product' => 'create, update, delete',
-		'Productcategorie' => 'create, update, delete',
-		'Booking' => 'create, update, delete',
-		'Bookingitem' => 'create, update, delete',
-		
+		'Product' => 'index,list, show, new, create, edit, update, delete',
+		'Productcategorie' => 'list, show, new, create, edit, update, delete',
+		'Booking' => 'new, list, show, exit, create, edit, update, delete',
+		'Bookingitem' => 'list, show, new, create, edit, update, delete',
+		'Customer' => 'list'
 	)
 );
 

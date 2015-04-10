@@ -48,6 +48,8 @@ class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return	Tx_Promoshop_Domain_Session_SessionHandler this
 	 */
 	public function writeToSession($object) {
+		//\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->args, 'Remove Escort');
+	//exit();
 		$sessionData = serialize($object);
 		$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_promoshop_pi1', $sessionData);
 		$GLOBALS['TSFE']->fe_user->storeSessionData();

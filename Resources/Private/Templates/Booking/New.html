@@ -16,18 +16,19 @@
 		<f:render partial="FormErrors" />
 
 		<f:form method="post" controller="Booking" action="exit"  name="newBooking" object="{newBooking}" arguments="{selectedProducts : selectedProducts}" class="vodaForm">
-			<ul class="formList wideFormList clear">
+
 				<f:if condition="{customer}">
 					<f:then>
-						<f:render partial="Customer/FormFields" arguments="{customer: customer}" />
+						<f:render partial="Customer/FormFields" arguments="{customer: customer, errormail: errormail}" />
 					</f:then>
 					<f:else>
 						<f:render partial="Booking/FormFields" />
 					</f:else>
 				</f:if>
+				
 				<f:form.hidden property="starttime" value="{starttime}" />
 				<f:form.hidden property="endtime" value="{endtime}" />
-			</ul>
+
 			<br class="clear">
 			<div id="formButtons">
 			
@@ -45,17 +46,18 @@
 				
 				<div class="formnote"><f:translate key="tx_promoshop_general_note.required" /></div>
 				
-				<span class="aButton bgCallToAction">
-				<span>
-				<f:form.submit value="{f:translate(key: 'tx_promoshop_general_submit.forward')}" />
-				</span>
-				</span>
-				
-				<span class="aButton bgCallToAction">
-				<span>
-				<f:form.submit name="backlink" value="{f:translate(key: 'tx_promoshop_general_submit.back')}" /> 
-				</span>
-				</span>
+				<div>
+					<span class="aButton bgCallToAction">
+						<span>
+							<f:form.submit value="{f:translate(key: 'tx_promoshop_general_submit.forward')}" />
+						</span>
+					</span>
+					<span class="aButton bgCallToAction">
+						<span>
+							<f:form.submit name="backlink" value="{f:translate(key: 'tx_promoshop_general_submit.back')}" /> 
+					</span>
+					</span>
+				</div>
 			</div>
 		</f:form>
 	</f:then>

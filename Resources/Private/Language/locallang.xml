@@ -122,6 +122,7 @@
 			<label index="tx_promoshop_domain_model_customer.fax">Fax</label>
 			<label index="tx_promoshop_domain_model_customer.mobile">Mobilnummer</label>
 			<label index="tx_promoshop_domain_model_customer.email">E-Mail</label>
+			<label index="tx_promoshop_domain_model_customer.erroremail">E-Mail-Adresse inkorrekt</label>
 		</languageKey>
 	</data>
 </T3locallang>

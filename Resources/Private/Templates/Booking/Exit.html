@@ -86,22 +86,22 @@
 		<f:form method="post" controller="Booking" action="create"  name="newBooking" object="{newBooking}" arguments="{selectedProducts : bookingitems}" class="vodaForm">
 			<br class="clear">
 			<div id="formButtons">
-				<f:form.hidden property="company" value="{company}" />
-				<f:form.hidden property="gender" value="{gender}" />
-				<f:form.hidden property="firstName" value="{firstName}" />
-				<f:form.hidden property="lastName" value="{lastName}" />
-				<f:form.hidden property="address" value="{address}" />
-				<f:form.hidden property="zip" value="{zip}" />
-				<f:form.hidden property="city" value="{city}" />
-				<f:form.hidden property="telephone" value="{telephone}" />
-				<f:form.hidden property="fax" value="{fax}" />
-				<f:form.hidden property="mobile" value="{mobile}" />
-				<f:form.hidden property="email" value="{email}" />
-				<f:form.hidden property="vbname" value="{vbname}" />
-				<f:form.hidden property="vbphone" value="{vbphone}" />
-				<f:form.hidden property="starttime" value="{starttime}" />
-				<f:form.hidden property="endtime" value="{endtime}" />
-				<f:form.hidden property="delivery" value="{delivery}" />
+				<f:form.hidden property="company" value="{customer.company}" />
+				<f:form.hidden property="gender" value="{customer.gender}" />
+				<f:form.hidden property="firstName" value="{customer.firstName}" />
+				<f:form.hidden property="lastName" value="{customer.lastName}" />
+				<f:form.hidden property="address" value="{customer.address}" />
+				<f:form.hidden property="zip" value="{customer.zip}" />
+				<f:form.hidden property="city" value="{customer.city}" />
+				<f:form.hidden property="telephone" value="{customer.telephone}" />
+				<f:form.hidden property="fax" value="{customer.fax}" />
+				<f:form.hidden property="mobile" value="{customer.mobile}" />
+				<f:form.hidden property="email" value="{customer.email}" />
+				<f:form.hidden property="vbname" value="{customer.vbname}" />
+				<f:form.hidden property="vbphone" value="{customer.vbphone}" />
+				<f:form.hidden property="starttime" value="{customer.starttime}" />
+				<f:form.hidden property="endtime" value="{customer.endtime}" />
+				<f:form.hidden property="delivery" value="{customer.delivery}" />
 				<f:form.hidden name="agb" value="{agb}" />
 				
 				<f:if condition="{bookingitems}">
@@ -113,18 +113,18 @@
 					</f:for>
 				</f:if>
 				
-				<span class="aButton bgCallToAction">
-				<span>
-				<f:form.submit value="{f:translate(key: 'tx_promoshop_general_submit.order')}" />
-				</span>
-				</span>
-				
-				<span class="aButton bgCallToAction">
-				<span>
-				<f:form.submit name="backlink" value="{f:translate(key: 'tx_promoshop_general_submit.back')}" />
-				</span>
-				</span>
-				
+				<div>
+					<span class="aButton bgCallToAction cButton">
+						<span>
+							<f:form.submit value="{f:translate(key: 'tx_promoshop_general_submit.order')}" />
+						</span>
+					</span>
+					<span class="aButton bgCallToAction">
+						<span>
+							<f:form.submit name="backlink" value="{f:translate(key: 'tx_promoshop_general_submit.back')}" />
+						</span>
+					</span>
+				</div>
 			</div>
 		</f:form>
 	</f:then>

@@ -16,6 +16,10 @@
 			$.showSubmitButton();
 		});
 		
+		$('.proselect').change(function() {
+			$.showSubmitButton();
+		});
+
 		$('.submit').mouseenter(function() {
 			if(!$('#agb').attr('checked')){
 				alert(unescape('Sie m%FCssen unsere Ausleihbedingungen akzeptieren!'));
@@ -34,6 +38,10 @@
 			}
 		});
 		
+		$(window).load(function() {
+			$.showProducts();
+		});
+				
 		$.extend({
 			showSubmitButton: function() {
 				/* alle Elemente mit der CSS-Klasse "proselect" durchlaufen */  
@@ -129,8 +137,17 @@
 						alert('Error');
 					}
 				});
+			},
+			
+			urlParam: function(name){
+    			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    			if (results==null){
+       				return null;
+    			} else { 
+       				return results[1] || 0;
+    			}
 			}
-		
+
 		});
 		
 	});

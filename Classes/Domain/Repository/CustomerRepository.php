@@ -34,5 +34,16 @@ namespace Guso\Promoshop\Domain\Repository;
  */
 class CustomerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	/**
+	 * Overload Find by UID
+	 *
+	 * @param \int $uid fe_users UID
+	 * @return object
+	 */
+	public function findByUid($uid) {
+		$object = $this->identityMap->getObjectByIdentifier($uid, $this->objectType);
+		
+		return $object;
+	}
 }
 ?>
