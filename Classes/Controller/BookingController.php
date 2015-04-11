@@ -186,7 +186,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			$this->view->assign('newBooking', $booking);
 			
 		} else {
-			$this->flashMessages->add('Bitte loggen Sie sich ein.');
+			$this->addFlashMessage('Bitte loggen Sie sich ein.', 'Log-in Fehler', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 			$this->redirect('index', 'Product');
 		}
 	}
@@ -267,7 +267,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$this->view->assign('filePath', $this->baseUrl . $filePath);
 			}
 		} else {
-			$this->flashMessages->add('Bitte loggen Sie sich ein.');
+			$this->addFlashMessage('Bitte loggen Sie sich ein.', 'Log-in Fehler', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 			$this->redirect('index', 'Product');
 		}
 		
@@ -293,7 +293,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function updateAction(Booking $booking = NULL) {
 		$this->bookingRepository->update($booking);
-		$this->flashMessageContainer->add('Your Booking was updated.');
+		$this->addFlashMessage('Ihre Buchung wurde geändert.', 'Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -306,7 +306,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function deleteAction(Booking $booking = NULL) {
 		$this->bookingRepository->remove($booking);
-		$this->flashMessageContainer->add('Your Booking was removed.');
+		$this->addFlashMessage('Ihre Buchung wurde entfernt.', 'Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 	
@@ -335,7 +335,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			$this->view->assign('customer', $this->args['newBooking']);
 			$this->view->assign('bookingitems', $this->args['selectedProducts']);
 		} else {
-			$this->flashMessages->add('Bitte loggen Sie sich ein.');
+			$this->addFlashMessage('Bitte loggen Sie sich ein.', 'Log-in Fehler', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 			$this->redirect('index', 'Product');
 		}
 		

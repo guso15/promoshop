@@ -153,7 +153,7 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		
 			$this->view->assign('pluginSetup', $pluginSetup);
 		} else {
-			$this->flashMessageContainer->add('Bitte loggen Sie sich ein.');
+			$this->addFlashMessage('Bitte loggen Sie sich ein.', 'Log-in Fehler', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 			$this->sessionRepository->cleanUpSession();
 		}
 	}
@@ -204,6 +204,7 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	public function createAction(Product $product) {
 		$this->productRepository->add($product);
 		$this->flashMessageContainer->add('Your new Product was created.');
+		$this->addFlashMessage('Ihr neues Produkt wurde angelegt.', 'Ihr Produkt', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -229,7 +230,7 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function updateAction(Product $product) {
 		$this->productRepository->update($product);
-		$this->flashMessageContainer->add('Your Product was updated.');
+		$this->addFlashMessage('Ihr bestehendes Produkt wurde geändert.', 'Ihr Produkt', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -242,7 +243,7 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function deleteAction(Product $product) {
 		$this->productRepository->remove($product);
-		$this->flashMessageContainer->add('Your Product was removed.');
+		$this->addFlashMessage('Ihr bestehendes Produkt wurde entfernt.', 'Ihr Produkt', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 	

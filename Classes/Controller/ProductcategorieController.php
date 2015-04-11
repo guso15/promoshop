@@ -76,7 +76,7 @@ class ProductcategorieController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 	 */
 	public function createAction(Productcategorie $productcategorie) {
 		$this->productcategorieRepository->add($productcategorie);
-		$this->flashMessageContainer->add('Your new Productcategorie was created.');
+		$this->addFlashMessage('Ihre neue Produktkategorie wurde angelegt.', 'Ihre Produktkategorie', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -100,7 +100,7 @@ class ProductcategorieController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 	 */
 	public function updateAction(Productcategorie $productcategorie) {
 		$this->productcategorieRepository->update($productcategorie);
-		$this->flashMessageContainer->add('Your Productcategorie was updated.');
+		$this->addFlashMessage('Ihre bestehende Produktkategorie wurde angelegt.', 'Ihre Produktkategorie', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -113,7 +113,7 @@ class ProductcategorieController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 	 */
 	public function deleteAction(Productcategorie $productcategorie) {
 		$this->productcategorieRepository->remove($productcategorie);
-		$this->flashMessageContainer->add('Your Productcategorie was removed.');
+		$this->addFlashMessage('Ihre bestehende Produktkategorie wurde entfernt.', 'Ihre Produktkategorie', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 

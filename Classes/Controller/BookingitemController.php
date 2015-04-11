@@ -77,7 +77,7 @@ class BookingitemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	 */
 	public function createAction(Bookingitem $bookingitem) {
 		$this->bookingitemRepository->add($bookingitem);
-		$this->flashMessageContainer->add('Your new Bookingitem was created.');
+		$this->addFlashMessage('Ihre neue Buchung wurde angelegt.', 'Ihre Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -100,7 +100,7 @@ class BookingitemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	 */
 	public function updateAction(Bookingitem $bookingitem) {
 		$this->bookingitemRepository->update($bookingitem);
-		$this->flashMessageContainer->add('Your Bookingitem was updated.');
+		$this->addFlashMessage('Ihre bestehende Buchung wurde geändert.', 'Ihre Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -113,7 +113,7 @@ class BookingitemController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	 */
 	public function deleteAction(Bookingitem $bookingitem) {
 		$this->bookingitemRepository->remove($bookingitem);
-		$this->flashMessageContainer->add('Your Bookingitem was removed.');
+		$this->addFlashMessage('Ihre bestehende Buchung wurde entfernt.', 'Ihre Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 

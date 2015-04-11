@@ -1,46 +1,39 @@
-<li>
+
 	<div class="formCopy">
 		<label for="company">
 			<f:translate key="tx_promoshop_domain_model_customer.company" /> <span class="required">*</span>
 		</label>
 	</div>
 	<f:form.textfield property="company" value="{company}" class="input_large" />
-</li>
-<li>
+
 	<div class="formCopy">
 		<label for="gender">
 			<f:translate key="tx_promoshop_domain_model_customer.gender" /> <span class="required">*</span>
 		</label>
 	</div>
-	<!-- <f:form.textfield property="gender" value="{gender}" /> -->
-	
 	<f:form.select options="{1: '{f:translate(key: \'tx_promoshop_domain_model_customer.gender.1\')}', 2: '{f:translate(key: \'tx_promoshop_domain_model_customer.gender.2\')}'}" property="gender" value="{gender}" class="inputBorder" />
-</li>
-<li>
+
 	<div class="formCopy">
 		<label for="firstName">
 			<f:translate key="tx_promoshop_domain_model_customer.first_name" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="firstName" value="{firstName}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="firstName" value="{firstName}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="lastName">
 			<f:translate key="tx_promoshop_domain_model_customer.last_name" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="lastName" value="{lastName}" class="input_large" additionalAttributes="{(required: 'required')} />
-</li>
-<li>
+	<f:form.textfield property="lastName" value="{lastName}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="address">
 			<f:translate key="tx_promoshop_domain_model_customer.address" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="address" value="{address}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="address" value="{address}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="zip">
 			<f:translate key="tx_promoshop_domain_model_customer.zip" /> <span class="required"></span>
@@ -50,54 +43,52 @@
 			<f:translate key="tx_promoshop_domain_model_customer.city" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="zip" value="{zip}" class="input_small" /> 
-	<f:form.textfield property="city" value="{city}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="zip" value="{zip}" additionalAttributes="{required: 'required'}" class="input_small" /> 
+	<f:form.textfield property="city" value="{city}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="telephone">
 			<f:translate key="tx_promoshop_domain_model_customer.telephone" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="telephone" value="{telephone}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="telephone" type="tel" value="{telephone}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="fax">
 			<f:translate key="tx_promoshop_domain_model_customer.fax" />
 		</label>
 	</div>
-	<f:form.textfield property="fax" value="{fax}" class="input_large" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="fax" type="tel" value="{fax}" class="input_large" class="input_large" />
+
 	<div class="formCopy">
 		<label for="mobile">
 			<f:translate key="tx_promoshop_domain_model_customer.mobile" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="mobile" value="{mobile}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="mobile" value="{mobile}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="email">
-			<f:translate key="tx_promoshop_domain_model_customer.email" /> <span class="required">*</span>
+			<f:translate key="tx_promoshop_domain_model_customer.email" /> <span class="required">* </span>
+			<f:if condition="{errormail}">
+				<f:then>
+					<span class="error"><f:translate key="tx_promoshop_domain_model_customer.erroremail" /></span>
+				</f:then>
+			</f:if>
 		</label>
 	</div>
-	<f:form.textfield property="email" value="{email}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="email" type="email" value="{email}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="vbname">
 			<f:translate key="tx_promoshop_domain_model_booking.vbname" /> <span class="required">*</span>
 		</label>
 	</div>
-	<f:form.textfield property="vbname" value="{vbname}" class="input_large" />
-</li>
-<li>
+	<f:form.textfield property="vbname" value="{vbname}" additionalAttributes="{required: 'required'}" class="input_large" />
+
 	<div class="formCopy">
 		<label for="vbphone">
 			<f:translate key="tx_promoshop_domain_model_booking.vbphone" />
 		</label>
 	</div>
-	<f:form.textfield property="vbphone" value="{vbphone}" class="input_large" />
-</li>
+	<f:form.textfield property="vbphone" type="tel" value="{vbphone}" class="input_large" />
