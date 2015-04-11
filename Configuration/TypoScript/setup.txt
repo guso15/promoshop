@@ -39,7 +39,7 @@ module.tx_promoshop {
 
 config.tx_extbase {
 	persistence.classes {
-		Tx_Promoshop_Domain_Model_Customer {
+		Guso\Promoshop\Domain\Model\Customer {
 			mapping {
 				tableName = fe_users
 			}

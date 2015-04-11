@@ -219,7 +219,8 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			} else {
 				
 			//\TYPO3\CMS\Core\Utility\DebugUtility::debug($booking, 'Remove Escort');
-	
+			
+			/*
 				$starttime = $newBooking->getStarttime();
 				$endtime = $newBooking->getEndtime();
 
@@ -250,8 +251,8 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$adminMail = $this->settings['adminMail'];
 				$mailHeaderImage = 'uploads/tx_promoshop/' . $this->settings['mailHeaderImage'];
 				
-				$booking->setFile($fileName);
-				
+				//$booking->setFile($fileName);
+				//exit();
 				$outputParams = array (
 									'newBooking' => $this->args['newBooking'],
 									'bookingItems' => $this->args['selectedProducts'],
@@ -264,7 +265,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 								);
 				$this->view->assign('outputParams', $outputParams);
 				
-				$this->view->assign('filePath', $this->baseUrl . $filePath);
+				$this->view->assign('filePath', $this->baseUrl . $filePath);*/
 			}
 		} else {
 			$this->addFlashMessage('Bitte loggen Sie sich ein.', 'Log-in Fehler', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
@@ -293,7 +294,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function updateAction(Booking $booking = NULL) {
 		$this->bookingRepository->update($booking);
-		$this->addFlashMessage('Ihre Buchung wurde geändert.', 'Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
+		$this->addFlashMessage('Ihre Buchung wurde geändert.', 'Ihre Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 
@@ -306,7 +307,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	public function deleteAction(Booking $booking = NULL) {
 		$this->bookingRepository->remove($booking);
-		$this->addFlashMessage('Ihre Buchung wurde entfernt.', 'Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
+		$this->addFlashMessage('Ihre Buchung wurde entfernt.', 'Ihre Buchung', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
 		$this->redirect('list');
 	}
 	
@@ -346,7 +347,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * Creates a BookingItem for every item in the bookingItems array and adds it to the booking.
 	 *
-	 * @param Tx_Promoshop_Domain_Model_Booking $booking The booking the booking items should be added to
+	 * @param Guso\Promoshop\Domain\Model\Booking $booking The booking the booking items should be added to
 	 * @param array $bookingitems An array of booking items
 	 * @param integer $starttime A timestamp for starttime
 	 * @param integer $endtime A timestamp for endtime

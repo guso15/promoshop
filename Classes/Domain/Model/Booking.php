@@ -1,6 +1,8 @@
 <?php
 namespace Guso\Promoshop\Domain\Model;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -68,7 +70,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * The customer who books the products.
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+	 * @var \Guso\Promoshop\Domain\Model\Customer
 	 */
 	protected $customer;
 	
@@ -178,11 +180,11 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * __construct
 	 *
 	 * @return void
-	 */
+	
 	public function __construct() {
 		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+		//$this->initStorageObjects();
+	} */
 
 	/**
 	 * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
@@ -195,7 +197,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->bookingitems = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		  //$this->bookingitems = GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+		 //$this->bookingitems = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage($this->objectManager);
 	}
 	
 	/**
@@ -267,7 +270,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the customer
 	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+	 * @return \Guso\Promoshop\Domain\Model\Customer
 	 */
 	public function getCustomer() {
 		return $this->customer;
@@ -276,10 +279,10 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the customer
 	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $customer
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser customer
+	 * @param \Guso\Promoshop\Domain\Model\Customer $customer
+	 * @return void
 	 */
-	public function setCustomer(FrontendUser $customer) {
+	public function setCustomer(Customer $customer) {
 		$this->customer = $customer;
 	}
 	
@@ -560,7 +563,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitem
 	 */
 	public function addBookingitem(Bookingitem $bookingitem) {
-		$this->bookingitems->attach($bookingitem);
+		//$this->bookingitems->attach($bookingitem);
 	}
 
 	/**

@@ -32,18 +32,7 @@ namespace Guso\Promoshop\Domain\Repository;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class CustomerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class CustomerRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
 
-	/**
-	 * Overload Find by UID
-	 *
-	 * @param \int $uid fe_users UID
-	 * @return object
-	 */
-	public function findByUid($uid) {
-		$object = $this->identityMap->getObjectByIdentifier($uid, $this->objectType);
-		
-		return $object;
-	}
 }
 ?>

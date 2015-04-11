@@ -36,6 +36,15 @@ require_once(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public
  */
 
 class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+	
+	 /**
+	 * Product repository
+	 *
+	 * @var \Guso\Promoshop\Domain\Repository\ProductRepository
+	 * @inject
+	 */
+	protected $productRepository = NULL;
+	
 		
 	 /**
 	 * Render the supplied contents as a pdf
@@ -45,8 +54,9 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 	 */
     public function render($params = array()) {
     
-    	$productRepository = GeneralUtility::makeInstance('Tx_Promoshop_Domain_Repository_ProductRepository');
-    	$dateService = GeneralUtility::makeInstance('Tx_Promoshop_Service_DateTimeService');
+    	//$productRepository = GeneralUtility::makeInstance('Guso\Promoshop\Domain\Repository\ProductRepository');
+    	$productRepository = $this->productRepository;
+    	$dateService = GeneralUtility::makeInstance('Guso\Promoshop\Service\DateTimeService');
     	
     	// Get the parameters
 		$customer =			$params['newBooking'];
@@ -77,7 +87,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		
 		// Convert to iso-8859-1
 		$cs = GeneralUtility::makeInstance('t3lib_cs');
-		$cs->convArray(&$customer, $fromCharset, 'iso-8859-1');
+		$cs->convArray($customer, $fromCharset, 'iso-8859-1');
 		
 		define('EUR',chr(128));
 		
@@ -92,8 +102,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		
 		$starttime = $dateService->getDateFromTimestamp($customer['starttime']);
 		$endtime = $dateService->getDateFromTimestamp($customer['endtime']);
-		
-		
+
     	$pdf = new createPdf();
     	
     	$pagecount = $pdf->setSourceFile(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Files/Promoshop.pdf'); 
