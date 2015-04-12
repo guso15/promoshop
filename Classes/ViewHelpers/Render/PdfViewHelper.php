@@ -28,7 +28,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility,
 ***************************************************************/
 
 //require_once(PATH_t3lib.'class.t3lib_befunc.php');
-require_once(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Scripts/Pdf/class.createPdf.php');
+//require_once(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Scripts/Pdf/class.createPdf.php');
 //require_once(PATH_t3lib.'class.t3lib_cs.php');
 
  /**
@@ -103,7 +103,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$starttime = $dateService->getDateFromTimestamp($customer['starttime']);
 		$endtime = $dateService->getDateFromTimestamp($customer['endtime']);
 
-    	$pdf = new createPdf();
+		$pdf = GeneralUtility::makeInstance('Guso\Promoshop\Utility\Pdf\CreatePdfUtility');
     	
     	$pagecount = $pdf->setSourceFile(ExtensionManagementUtility::extPath('promoshop').'/Resources/Public/Files/Promoshop.pdf'); 
     	
@@ -217,7 +217,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$tplidx = $pdf->importPage(1, '/MediaBox');
 		$pdf->addPage(); 
 		$pdf->useTemplate($tplidx, 1, 1);
-						
+				\TYPO3\CMS\Core\Utility\DebugUtility::debug($params, 'Remove Escort');		
 		$pdf->Output($filePath . $fileName, 'F');
 		
 		return $fileName;

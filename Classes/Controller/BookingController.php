@@ -194,9 +194,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * Creates a new booking
 	 *
-	 * @param $newBooking A fresh Booking object which has not yet been added to the repository
-	 * A fresh Booking object which has not yet been added to the repository
-	 *
+	 * @param Guso\Promoshop\Domain\Model\Booking $newBooking 
 	 * @param array $bookingitems An array of booked products.
 	 *
 	 * @return void
@@ -218,9 +216,9 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$this->view->assign('isCreated', $isCreated);
 			} else {
 				
-			//\TYPO3\CMS\Core\Utility\DebugUtility::debug($booking, 'Remove Escort');
+			\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->newBooking, 'Create');
 			
-			/*
+	/*		
 				$starttime = $newBooking->getStarttime();
 				$endtime = $newBooking->getEndtime();
 
@@ -314,14 +312,14 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action exit
 	 *
-	 * @param \Guso\Promoshop\Domain\Model\Booking $booking
+	 * @param Guso\Promoshop\Domain\Model\Booking $booking
 	 * 
 	 * @dontverifyrequesthash
 	 *
 	 * @return void
 	 */
-	public function exitAction(Booking $booking = NULL) {
-		
+	public function exitAction(\Guso\Promoshop\Domain\Model\Booking $booking = NULL) {
+		\TYPO3\CMS\Core\Utility\DebugUtility::debug($booking, 'Exit');
 		if (array_key_exists('backlink', $this->args)) {
 			$this->redirect('index', 'Product', NULL, array('args' => $this->args));
 		}

@@ -1,4 +1,6 @@
 <?php
+namespace Guso\Promoshop\Utility\Pdf;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -22,40 +24,14 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Scripts/Fpdf/fpdf.php');
-require_once(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Scripts/Fpdi/fpdi.php');
+//require_once(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Scripts/Fpdf/fpdf.php');
+//require_once(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Scripts/Fpdi/fpdi.php');
 
  /**
  * Class for implementing and extending the fpdf functionality via the fpdi helper class.
  */
 
-class createPdf extends FPDI {
-	
-	// Page header
-	/*public function Header()
-	{
-    	// Logo
-	    $this->Image(t3lib_extMgm::extPath('promoshop').'/Resources/Public/Files/logo.gif',10,6,30);
-    	// Arial bold 15
-   	 	$this->SetFont('Arial','B',15);
-    	// Move to the right
-    	$this->Cell(80);
-    	// Title
-    	$this->Cell(30,10,'Title',1,0,'C');
-    	// Line break
-    	$this->Ln(20);
-	}
+class CreatePdfUtility extends \Guso\Promoshop\Utility\Pdf\Fpdi\Fpdi {
 
-
-	// Page footer
-	public function footer() {
-	    // Position at 1.5 cm from bottom
-    	$this->SetY(-15);
-	    // Arial italic 8
-    	$this->SetFont('Arial','',8);
-    	// Page number
-    	$this->Cell(0,10,'Seite '.$this->PageNo().'/{nb}',0,0,'C');    	
-    }*/
 }
-
 ?>
