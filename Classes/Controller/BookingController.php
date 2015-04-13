@@ -203,8 +203,8 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$isCreated = $this->sessionRepository->findBySession();
 
 		if (!$isCreated) {
-			$this->sessionRepository->writeToSession($token);
-			$this->sessionRepository->cleanUpSession();
+			//$this->sessionRepository->writeToSession($token);
+			//$this->sessionRepository->cleanUpSession();
 		}
 
 		if (array_key_exists('backlink', $this->args)) {
@@ -218,10 +218,9 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$starttime = $newBooking->getStarttime();
 				$endtime = $newBooking->getEndtime();
 
-				$booking = $this->createAndAddBookingitems($newBooking, $bookingitems, $starttime, $endtime);
-		
-				$this->bookingRepository->add($booking);
-				$booking->setCustomer($this->customer);
+				$newBooking = $this->createAndAddBookingitems($newBooking, $bookingitems, $starttime, $endtime);
+				$this->bookingRepository->add($newBooking);
+				$newBooking->setCustomer($this->customer);
 			
 				$token = md5($this->args['__hmac']);
 				$this->sessionRepository->writeToSession($token);
@@ -243,9 +242,10 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$fileName = $dateString . '_' . $fileName . '.pdf';
 				
 				$adminMail = $this->settings['adminMail'];
-				$mailHeaderImage = 'uploads/tx_promoshop/' . $this->settings['mailHeaderImage'];		
+				$mailHeaderLogo = 'uploads/tx_promoshop/' . $this->settings['mailHeaderLogo'];
+				$mailHeaderImage = 'uploads/tx_promoshop/' . $this->settings['mailHeaderImage'];	
 				
-				$booking->setFile($fileName);
+				$newBooking->setFile($fileName);
 
 				$outputParams = array (
 									'newBooking' => $this->args['newBooking'],
@@ -255,6 +255,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 									'shopName' => $shopName,
 									'adminMail' => $adminMail,
 									'mailHeaderImage' => $mailHeaderImage,
+									'mailHeaderLogo' => $mailHeaderLogo,
 									'baseUrl' => $this->baseUrl
 								);
 				$this->view->assign('outputParams', $outputParams);
@@ -351,7 +352,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 		foreach ($bookingitems['quantity'] as $key => $quantity) {
 			if (!empty($quantity)) {
-				$booking->addBookingitem(new \Guso\Promoshop\Domain\Model\Bookingitem($quantity, $bookingitems['product'][$key], $starttime, $endtime));
+				$booking->addBookingitems(new \Guso\Promoshop\Domain\Model\Bookingitem($quantity, $bookingitems['product'][$key], $starttime, $endtime));
 			}
 		}
 

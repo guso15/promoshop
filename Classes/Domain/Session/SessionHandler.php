@@ -45,11 +45,9 @@ class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
 	/**
 	 * Writes an object into the PHP session
 	 * @param	$object	any serializable object to store into the session
-	 * @return	Tx_Promoshop_Domain_Session_SessionHandler this
+	 * @return	Guso\Promoshop\Domain\Session\SessionHandler this
 	 */
 	public function writeToSession($object) {
-		//\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->args, 'Remove Escort');
-	//exit();
 		$sessionData = serialize($object);
 		$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_promoshop_pi1', $sessionData);
 		$GLOBALS['TSFE']->fe_user->storeSessionData();
@@ -58,7 +56,7 @@ class SessionHandler implements \TYPO3\CMS\Core\SingletonInterface {
  
 	/**
 	 * Cleans up the session: removes the stored object from the PHP session
-	 * @return	Tx_Promoshop_Domain_Session_SessionHandler this
+	 * @return	Guso\Promoshop\Domain\Session\SessionHandler this
 	 */
 	public function cleanUpSession() {
 		$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_promoshop_pi1', NULL);

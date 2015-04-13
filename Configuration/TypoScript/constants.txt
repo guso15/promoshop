@@ -23,8 +23,11 @@ plugin.tx_promoshop {
 		# cat=plugin.tx_promoshop/file; type=string; label=File path (FE)
 		filePath = uploads/tx_promoshop/bookings/
 		
+		# cat=plugin.tx_promoshop//a; type=string; label=Mail header logo (FE)
+		mailHeaderLogo = maillogo.png
+		
 		# cat=plugin.tx_promoshop//a; type=string; label=Mail header image (FE)
-		mailHeaderImage = maillimage.jpg
+		mailHeaderImage = mailimage.png
 	}
 }
 

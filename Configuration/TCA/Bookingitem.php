@@ -134,13 +134,7 @@ $TCA['tx_promoshop_domain_model_bookingitem'] = array(
 				),
 			),
 		),
-		'booking' => array(
-			'config' => array(
-				'type' => 'passthrough',
-			),
-		),
 	),
 );
 
-## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 ?>

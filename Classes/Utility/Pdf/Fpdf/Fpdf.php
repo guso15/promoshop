@@ -1025,8 +1025,6 @@ function Output($name='', $dest='')
 			echo $this->buffer;
 			break;
 		case 'F':
-				\TYPO3\CMS\Core\Utility\DebugUtility::debug($name, 'Remove Escort');
-
 			// Save to local file
 			$f = fopen($name,'wb');
 			if(!$f)

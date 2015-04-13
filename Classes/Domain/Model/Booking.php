@@ -180,11 +180,11 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * __construct
 	 *
 	 * @return void
-	
+	*/
 	public function __construct() {
 		//Do not remove the next line: It would break the functionality
-		//$this->initStorageObjects();
-	} */
+		$this->initStorageObjects();
+	} 
 
 	/**
 	 * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
@@ -197,8 +197,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		  //$this->bookingitems = GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
-		 //$this->bookingitems = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage($this->objectManager);
+		  $this->bookingitems = GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
 	}
 	
 	/**
@@ -556,29 +555,29 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
     }
 
 	/**
-	 * Adds a Bookingitem
+	 * Add Bookingitems
 	 *
 	 * @param \Guso\Promoshop\Domain\Model\Bookingitem $bookingitem
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitem
+	 * @return void
 	 */
-	public function addBookingitem(Bookingitem $bookingitem) {
-		//$this->bookingitems->attach($bookingitem);
+	public function addBookingitems(\Guso\Promoshop\Domain\Model\Bookingitem $bookingitem) {
+		$this->bookingitems->attach($bookingitem);
 	}
 
 	/**
-	 * Removes a Bookingitem
+	 * Remove Bookingitems
 	 *
-	 * @param Tx_Promoshop_Domain_Model_Bookingitem $bookingitemToRemove The Bookingitem to be removed
+	 * @param Guso\Promoshop\Domain\Model\Bookingitem $bookingitems The Bookingitem to be removed
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitems
+	 * @return void
 	 */
-	public function removeBookingitem(Bookingitem $bookingitemToRemove) {
-		$this->bookingitems->detach($bookingitemToRemove);
+	public function removeBookingitems(\Guso\Promoshop\Domain\Model\Bookingitem $bookingitems) {
+		$this->bookingitems->detach($bookingitems);
 	}
 
 	/**
-	 * Returns the Bookingitems
+	 * Return Bookingitems
 	 *
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitems
 	 */
@@ -587,11 +586,11 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Sets the Bookingitems
+	 * Sets Bookingitems
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> $bookingitems
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Guso\Promoshop\Domain\Model\Bookingitem> bookingitems
+	 * @return void
 	 */
 	public function setBookingitems(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $bookingitems) {
 		$this->bookingitems = $bookingitems;

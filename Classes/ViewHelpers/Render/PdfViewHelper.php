@@ -54,7 +54,6 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 	 */
     public function render($params = array()) {
     
-    	//$productRepository = GeneralUtility::makeInstance('Guso\Promoshop\Domain\Repository\ProductRepository');
     	$productRepository = $this->productRepository;
     	$dateService = GeneralUtility::makeInstance('Guso\Promoshop\Service\DateTimeService');
     	
@@ -79,8 +78,6 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$pictureWidth =		$params['formatOptions']['picture_width'] ? $params['formatOptions']['picture_width'] : '25';
 		$pictureMarginTop =	$params['formatOptions']['picture_margin_top'] ? $params['formatOptions']['picture_margin_top'] : '15';
 		$template =			$params['formatOptions']['template'] ? $params['formatOptions']['template'] : '';
-		
-		//$str = iconv('UTF-8', 'windows-1252', $customer['address']);
 		
 		// The data must be in iso-8859-1: Determine the charset from the database
 		$fromCharset = $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] ? $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] : 'iso-8859-1';
@@ -217,7 +214,6 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$tplidx = $pdf->importPage(1, '/MediaBox');
 		$pdf->addPage(); 
 		$pdf->useTemplate($tplidx, 1, 1);
-				\TYPO3\CMS\Core\Utility\DebugUtility::debug($params, 'Remove Escort');		
 		$pdf->Output($filePath . $fileName, 'F');
 		
 		return $fileName;

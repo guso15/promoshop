@@ -24,6 +24,5 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-$TYPO3_CONF_VARS['FE']['eID_include']['availableProducts'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Resources/Public/Scripts/Eid/EidAvailableProducts.php';
-//$TYPO3_CONF_VARS['FE']['eID_include']['availableProducts'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Utility/EidAvailableProducts.php';
+$TYPO3_CONF_VARS['FE']['eID_include']['availableProducts'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Resources/Public/Php/EidAvailableProducts.php';
 ?>
