@@ -215,10 +215,6 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			if ($isCreated) {
 				$this->view->assign('isCreated', $isCreated);
 			} else {
-				
-			\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->newBooking, 'Create');
-			
-	/*		
 				$starttime = $newBooking->getStarttime();
 				$endtime = $newBooking->getEndtime();
 
@@ -226,7 +222,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		
 				$this->bookingRepository->add($booking);
 				$booking->setCustomer($this->customer);
-				
+			
 				$token = md5($this->args['__hmac']);
 				$this->sessionRepository->writeToSession($token);
 				
@@ -247,10 +243,10 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$fileName = $dateString . '_' . $fileName . '.pdf';
 				
 				$adminMail = $this->settings['adminMail'];
-				$mailHeaderImage = 'uploads/tx_promoshop/' . $this->settings['mailHeaderImage'];
+				$mailHeaderImage = 'uploads/tx_promoshop/' . $this->settings['mailHeaderImage'];		
 				
-				//$booking->setFile($fileName);
-				//exit();
+				$booking->setFile($fileName);
+
 				$outputParams = array (
 									'newBooking' => $this->args['newBooking'],
 									'bookingItems' => $this->args['selectedProducts'],
@@ -263,7 +259,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 								);
 				$this->view->assign('outputParams', $outputParams);
 				
-				$this->view->assign('filePath', $this->baseUrl . $filePath);*/
+				$this->view->assign('filePath', $this->baseUrl . $filePath);
 			}
 		} else {
 			$this->addFlashMessage('Bitte loggen Sie sich ein.', 'Log-in Fehler', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, TRUE);
@@ -312,14 +308,13 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action exit
 	 *
-	 * @param Guso\Promoshop\Domain\Model\Booking $booking
+	 * @param Guso\Promoshop\Domain\Model\Booking $newBooking
 	 * 
 	 * @dontverifyrequesthash
 	 *
 	 * @return void
 	 */
-	public function exitAction(\Guso\Promoshop\Domain\Model\Booking $booking = NULL) {
-		\TYPO3\CMS\Core\Utility\DebugUtility::debug($booking, 'Exit');
+	public function exitAction(\Guso\Promoshop\Domain\Model\Booking $newBooking = NULL) {
 		if (array_key_exists('backlink', $this->args)) {
 			$this->redirect('index', 'Product', NULL, array('args' => $this->args));
 		}
@@ -330,7 +325,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		}
 		
 		if ($this->accessControlService->hasLoggedInFrontendUserOnStoragePid($this->storagePid)) {
-			$this->view->assign('newBooking', $booking);
+			$this->view->assign('newBooking', $newBooking);
 			$this->view->assign('customer', $this->args['newBooking']);
 			$this->view->assign('bookingitems', $this->args['selectedProducts']);
 		} else {
