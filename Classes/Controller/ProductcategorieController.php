@@ -4,7 +4,7 @@ namespace Guso\Promoshop\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Günter Sommer <sommer@agentur-milchmaedchen.de>, Milchmädchen - Agentur für Design, Kommunikation und Anwendungsentwicklung
+ *  (c) 2012 Günter Sommer <sommer@agentur-milchmaedchen.de>
  *  
  *  All rights reserved
  *

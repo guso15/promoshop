@@ -24,7 +24,6 @@
                         </TCEforms>
                     </settings.allowedProductCategories>
 
-
                     <persistence.productStoragePid>
                         <TCEforms>
                             <label>LLL:EXT:promoshop/Resources/Private/Language/locallang.xml:tx_promoshop_plugin_setting_product.storagepid</label>
@@ -66,18 +65,7 @@
 						</config>
 					  </TCEforms>
 				  </settings.mailHeaderImage>
-                    
-                    <!-- <settings.filePath>
-                        <TCEforms>
-                            <label>LLL:EXT:promoshop/Resources/Private/Language/locallang.xml:tx_promoshop_plugin_setting_filepath</label>
-                            <config>
-                                <type>input</type>
-          						<size>30</size>
-          						<eval>trim</eval>
-                            </config>
-                        </TCEforms>
-                    </settings.filePath> -->
-                
+
                 </el>
             </ROOT>
         </sDefault>

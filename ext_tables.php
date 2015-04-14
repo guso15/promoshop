@@ -74,7 +74,6 @@ $tempColumns = array (
 \TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA("fe_users");
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns("fe_users",$tempColumns,1);
 
-//$TCA['fe_users']['types']['Tx_Promoshop_Domain_Model_Customer'] = $TCA['fe_users']['types']['0'];
 $TCA['fe_users']['types']['Tx_Promoshop_Domain_Model_Customer'] = array('showitem' => '
 			disable,username;;;;1-1-1, password, usergroup, lastlogin;;;;1-1-1,
 			--div--;LLL:EXT:cms/locallang_tca.xml:fe_users.tabs.personelData, company;;;;1-1-1, gender;;2;;2-2-2, address;;3;;2-2-2, telephone;;4;;2-2-2, email,
@@ -197,5 +196,4 @@ array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], ar
 				),
 			);
 
-## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 ?>

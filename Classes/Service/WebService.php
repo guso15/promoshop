@@ -1,16 +1,11 @@
 <?php
 namespace Guso\Promoshop\Service;
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility,
-	\TYPO3\CMS\Core\Utility\DebugUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class WebService implements \TYPO3\CMS\Core\SingletonInterface {
  
      function handle() {
- 		//alert('ola');
-		//$this->feUserObject = tslib_eidtools::initFeUser();
-		//$this->TSFEObject = tslib_eidtools::getTSFE();
-
  		$output = NULL;
  		
  		$storagePid = GeneralUtility::_GP('storagePid');
@@ -43,7 +38,6 @@ class WebService implements \TYPO3\CMS\Core\SingletonInterface {
 
 		// Looking for products that are booked in the given timespan
 		$productarr = array();
-		//$products = $GLOBALS['TYPO3_DB']->exec_SELECTquery('product', 'tx_promoshop_domain_model_bookingitem');
 		$products = $GLOBALS['TYPO3_DB']->exec_SELECTquery('uid, quantity', 'tx_promoshop_domain_model_product', 'deleted = 0 AND hidden = 0 AND pid = ' . $productStoragePid . ' AND categorie = ' . $productCategorie);
 		$num = $GLOBALS['TYPO3_DB']->sql_num_rows($products);
 		if ($num >= 1) {
@@ -63,6 +57,7 @@ class WebService implements \TYPO3\CMS\Core\SingletonInterface {
 		}
 		
 		$respond2 = '';
+		
 		if (empty($start)) {
 			$respond1 = '<span style="color: red;">Bitte Startdatum wählen.</span>' . $start;
 		} elseif (empty($end)) {
@@ -73,9 +68,8 @@ class WebService implements \TYPO3\CMS\Core\SingletonInterface {
 			$respond2 = $productarr;
 		}
 		
-		
   		$output = array($respond1,$respond2);
-  		//echo 'pola';
+
   		echo json_encode($output);
 	}
 }

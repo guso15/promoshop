@@ -100,7 +100,7 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 			
 			if (is_file($mailFile)) {
 				$mail->attach(\Swift_Attachment::fromPath($mailFile)->setFilename($params['fileName']));
-				//$mail->addPart($mailtext.$mailfooter, 'text/plain');
+				
 				$sendMail = $mail->send();
 				
 				if ($sendMail > 0) {

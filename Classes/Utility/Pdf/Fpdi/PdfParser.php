@@ -199,8 +199,6 @@ class PdfParser
         $this->getPdfVersion();
 		
 		$this->_c = GeneralUtility::makeInstance('Guso\Promoshop\Utility\Pdf\Fpdi\PdfContext', $this->_f);
-        //require_once('pdf_context.php');
-        //$this->_c = new pdf_context($this->_f);
 
         // Read xref-Data
         $this->_xref = array();
