@@ -1,5 +1,48 @@
 (function($) {
 	$(document).ready(function() {
+		var mindate = new Date();
+		mindate.setDate(mindate.getDate() + 3);
+		
+		$('.datepicker').datetimepicker({
+			format:	'd.m.Y H:i',
+			formatDate: 'd.m.Y',
+			dayOfWeekStart: 1,
+			defaultTime: '09:00',
+			minTime: '09:00',
+			maxTime: '17:15',
+			step: 15,
+			todayButton: false,
+			minDate: mindate,
+			lang: 'de',
+			onGenerate: function( ct ){
+    			$(this).find('.xdsoft_date.xdsoft_weekend')
+      			.addClass('xdsoft_disabled');
+      			$(this).find('.xdsoft_current')
+      			.addClass('xdsoft_disabled');
+  			},
+  			disabledDates: ['01.05.2015','25.05.2015','03.10.2015'],
+  			highlightedDates: ['01.05.2015','25.05.2015','03.10.2015']
+		});
+
+		$('#endtime').click(function() {
+			var dateVar = $('#starttime').val();
+			dateVar = dateVar.split(" ");
+			dateVar = dateVar[0].split(".");
+			dateVar = '"' + dateVar[2] + '-' + dateVar[1] + '-' + dateVar[0] + '"';
+			dateVar = new Date(dateVar);
+			dateVar.setDate(dateVar.getDate() + 1);
+			
+			$('.datepicker').datetimepicker({
+				minDate: dateVar
+			});
+		});
+		
+		$('#starttime').click(function() {
+			$('.datepicker').datetimepicker({
+				minDate: mindate
+			});
+		});
+		
 		$('.datepicker').change(function() {
 			$.showProducts();
 		});

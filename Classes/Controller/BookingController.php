@@ -202,10 +202,10 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	public function createAction(\Guso\Promoshop\Domain\Model\Booking $newBooking = NULL, $bookingitems = array()) {
 		$isCreated = $this->sessionRepository->findBySession();
 
-		if (!$isCreated) {
-			//$this->sessionRepository->writeToSession($token);
-			//$this->sessionRepository->cleanUpSession();
-		}
+		/*if (!$isCreated) {
+			$this->sessionRepository->writeToSession($token);
+			$this->sessionRepository->cleanUpSession();
+		}*/
 
 		if (array_key_exists('backlink', $this->args)) {
 			$this->redirect('new', 'Booking', NULL, array('args' => $this->args));

@@ -72,13 +72,13 @@ class Bookingitem extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param integer $quantity The amount
 	 * @param integer $product The product
 	 * @return void
-	 
+	 */
 	public function __construct($quantity, $product, $starttime, $endtime) {
 		$this->setQuantity($quantity);
 		$this->setProduct($product);
 		$this->setStarttime($starttime);
 		$this->setEndtime($endtime);
-	}*/
+	}
 
 	/**
 	 * Returns the quantity

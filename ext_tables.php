@@ -138,7 +138,7 @@ array_push($TCA['fe_users']['columns']['tx_extbase_type']['config']['items'], ar
 						'starttime' => 'starttime',
 						'endtime' => 'endtime',
 					),
-					'searchFields'		=> 'short_description,long_description,categorir,image_title,file_title',
+					'searchFields'		=> 'title,short_description,long_description,categorir,image_title,file_title',
 					'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Product.php',
 					'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_promoshop_domain_model_product.gif'
 				),
