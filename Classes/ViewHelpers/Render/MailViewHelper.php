@@ -71,7 +71,7 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
     		
     		$mail->setFrom(array('noreply@vodafone-promotionshop.de' => 'Vodafone ' . $shopName));
     		$mail->setTo(array($customerMail => $customerName));
-    		
+
     		if (GeneralUtility::validEmail($adminMail)) {
     			$mail->setBcc(array($adminMail => 'Vodafone ' . $shopName));
     		}
@@ -87,7 +87,7 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 				</td><td valign="top">
 				' . $mailImage . '
 				</td></tr>
-				<tr><td style="padding: 10px;" colspan="2">'
+				<tr><td style="padding: 0 50px 20px 100px;" colspan="2">'
 				. nl2br($mailText) .
 				'</td></tr>
 				<tr><td style="padding: 10px;" colspan="2"></td></tr>

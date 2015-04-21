@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'uploadfolder' => 1,
 	'createDirs' => 'uploads/tx_promoshop/bookings',
 	'clearCacheOnLoad' => 0,
-	'version' => '2.0.0',
+	'version' => '2.1.0',
 	'dependencies' => 'extbase,fluid',
 	'constraints' => 
 	array (

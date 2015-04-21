@@ -18,7 +18,7 @@ plugin.tx_promoshop {
 		allowedProductCategories =
 		
 		# cat=plugin.tx_promoshop//a; type=string; label=Admin E-Mail (FE)
-		adminMail = 
+		adminMail = info@idomenia.de
 		
 		# cat=plugin.tx_promoshop/file; type=string; label=File path (FE)
 		filePath = uploads/tx_promoshop/bookings/
