@@ -52,7 +52,7 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 			$mailText .= 'Bitte bringen Sie Ihre unterschriebene Bestellbestätigung auch bei einer Abholung vor Ort mit.<br /><br />';
     		$mailText .= 'Beste Grüße<br /><br />Ihr Team der Vodafone-Promotionplattform<br />der Niederlassung Nord-Ost';
 			
-			$mailFooter = 'Vodafone GmbH<br />Niederlassung Nord-Ost<br />Attilastraße 61-67, 12105 Berlin<br /><br />';
+			$mailFooter = 'Vodafone GmbH, Niederlassung Nord-Ost, Attilastraße 61-67, 12105 Berlin<br /><br />';
 			$mailFooter .= '+++ Dies ist eine automatisch generierte E-Mail. Bitte antworten Sie nicht an diese E-Mail-Adresse. +++';
 			
 			if (is_file($mailLogo)) {
