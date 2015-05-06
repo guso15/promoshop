@@ -79,13 +79,6 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$pictureMarginTop =	$params['formatOptions']['picture_margin_top'] ? $params['formatOptions']['picture_margin_top'] : '15';
 		$template =			$params['formatOptions']['template'] ? $params['formatOptions']['template'] : '';
 		
-		// The data must be in iso-8859-1: Determine the charset from the database
-		$fromCharset = $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] ? $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] : 'iso-8859-1';
-		
-		// Convert to iso-8859-1
-		$cs = GeneralUtility::makeInstance('t3lib_cs');
-		$cs->convArray($customer, $fromCharset, 'iso-8859-1');
-		
 		define('EUR',chr(128));
 		
 		switch ($customer['delivery']) {
@@ -133,13 +126,13 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$pdf->SetFont($font,'',intval($fontSize));
 			
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,$customer['company'],0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,utf8_decode($customer['company']),0,1,'L',1);
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,$customer['firstName'] . ' ' . $customer['lastName'],0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,utf8_decode($customer['firstName']) . ' ' . utf8_decode($customer['lastName']),0,1,'L',1);
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,$customer['address'],0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,html_entity_decode(utf8_decode($customer['address'])),0,1,'L',1);
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,$customer['zip'] . ' ' . $customer['city'],0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,$customer['zip'] . ' ' . utf8_decode($customer['city']),0,1,'L',1);
 						
 		$pdf->SetX(105);
 		$pdf->Cell('',$cellHeight, '', '', 1);
@@ -161,7 +154,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$pdf->Cell('',$cellHeight, '', '', 1);
 				
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,utf8_decode('Zuständiger Vodafone VB: ') . $customer['vbname'],0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,utf8_decode('Zuständiger Vodafone VB: ') . utf8_decode($customer['vbname']),0,1,'L',1);
 						
 		if ($customer['vbphone']) {
 			$pdf->SetX(105);

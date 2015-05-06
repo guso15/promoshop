@@ -9,12 +9,12 @@ if (!defined('TYPO3_MODE')) {
 	'Promotionshop'
 );
 
-if (TYPO3_MODE === 'BE') {
+//if (TYPO3_MODE === 'BE') {
 
 	/**
 	 * Registers a Backend Module
 	 */
-	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+	/*\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 		$_EXTKEY,
 		'txeventplatformM1',	// Make module a submodule of 'txeventplatformM1'
 		'promoshop',			// Submodule key
@@ -29,7 +29,7 @@ if (TYPO3_MODE === 'BE') {
 		)
 	);
 
-}
+}*/
 
 /**
  * Register Plugin as Page Content and register flexform

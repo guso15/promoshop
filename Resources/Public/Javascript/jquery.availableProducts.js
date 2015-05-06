@@ -24,7 +24,7 @@
   			highlightedDates: ['01.05.2015','25.05.2015','03.10.2015']
 		});
 
-		$('#endtime').click(function() {
+		/*$('#endtime').click(function() {
 			var dateVar = $('#starttime').val();
 			dateVar = dateVar.split(" ");
 			dateVar = dateVar[0].split(".");
@@ -41,7 +41,7 @@
 			$('.datepicker').datetimepicker({
 				minDate: mindate
 			});
-		});
+		});*/
 		
 		$('.datepicker').change(function() {
 			$.showProducts();
@@ -177,7 +177,7 @@
 						}
 					},
 					error: function(error) {
-						alert('Error');
+						//alert('Error');
 					}
 				});
 			},
