@@ -119,11 +119,14 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			}
 			$this->view->assign('agb', $this->args['args']['agb']);
 		} else {
-			foreach($this->args['selectedProducts'] AS $key => $val) {
-				if ($val > 0) {
-					$selectedProducts .= $key . '=' . $val . ',';
+			if (is_array($this->args['selectedProducts'])) {
+				foreach($this->args['selectedProducts'] AS $key => $val) {
+					if ($val > 0) {
+						$selectedProducts .= $key . '=' . $val . ',';
+					}
 				}
-			};
+			}
+			
 			$this->view->assign('selectedProducts', $selectedProducts);
 			$this->view->assign('starttime', $this->args['starttime']);
 			$this->view->assign('endtime', $this->args['endtime']);

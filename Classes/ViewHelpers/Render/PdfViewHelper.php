@@ -130,7 +130,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$pdf->SetX(105);
 		$pdf->Cell(150,$cellHeight,utf8_decode($customer['firstName']) . ' ' . utf8_decode($customer['lastName']),0,1,'L',1);
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,html_entity_decode(utf8_decode($customer['address'])),0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,utf8_decode($customer['address']),0,1,'L',1);
 		$pdf->SetX(105);
 		$pdf->Cell(150,$cellHeight,$customer['zip'] . ' ' . utf8_decode($customer['city']),0,1,'L',1);
 						
