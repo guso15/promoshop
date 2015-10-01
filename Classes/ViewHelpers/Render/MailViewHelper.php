@@ -48,7 +48,7 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 			}
 
     		$mailText = 'Guten Tag' . $customerFullName . ',<br /><br />im Anhang finden Sie Ihre Bestellbestätigung.<br /><br />';
-    		$mailText .= 'Damit Ihre Reservierung verbindlich wird, müssen Sie dieses Dokument ausdrucken und innerhalb von 5 Werktagen unterschrieben an die Nummer 030 - 13 89 34 27 faxen. ';
+    		$mailText .= 'Damit Ihre Reservierung verbindlich wird, müssen Sie dieses Dokument ausdrucken und innerhalb von 5 Werktagen unterschrieben an uns faxen. ';
 			$mailText .= 'Bitte bringen Sie Ihre unterschriebene Bestellbestätigung auch bei einer Abholung vor Ort mit.<br /><br />';
     		$mailText .= 'Beste Grüße<br /><br />Ihr Team der Promotionplattform';
 			
@@ -56,7 +56,7 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 			
 			if (is_file($mailLogo)) {
     			$mailLogo = $mail->embed(\Swift_Image::fromPath($baseUrl . $mailLogo));
-    			$mailLogo = '<img src="' . $mailLogo . '" alt="Vodafone Logo" />';
+    			$mailLogo = '<img src="' . $mailLogo . '" alt="Logo" />';
     		} else {
     			$mailLogo = '';
     		}
