@@ -154,7 +154,7 @@ class PdfViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$pdf->Cell('',$cellHeight, '', '', 1);
 				
 		$pdf->SetX(105);
-		$pdf->Cell(150,$cellHeight,utf8_decode('Zuständiger Vodafone VB: ') . utf8_decode($customer['vbname']),0,1,'L',1);
+		$pdf->Cell(150,$cellHeight,utf8_decode('Zuständiger VB: ') . utf8_decode($customer['vbname']),0,1,'L',1);
 						
 		if ($customer['vbphone']) {
 			$pdf->SetX(105);
