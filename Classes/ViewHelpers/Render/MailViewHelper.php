@@ -50,9 +50,8 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
     		$mailText = 'Guten Tag' . $customerFullName . ',<br /><br />im Anhang finden Sie Ihre Bestellbestätigung.<br /><br />';
     		$mailText .= 'Damit Ihre Reservierung verbindlich wird, müssen Sie dieses Dokument ausdrucken und innerhalb von 5 Werktagen unterschrieben an die Nummer 030 - 13 89 34 27 faxen. ';
 			$mailText .= 'Bitte bringen Sie Ihre unterschriebene Bestellbestätigung auch bei einer Abholung vor Ort mit.<br /><br />';
-    		$mailText .= 'Beste Grüße<br /><br />Ihr Team der Vodafone-Promotionplattform<br />der Niederlassung Nord-Ost';
+    		$mailText .= 'Beste Grüße<br /><br />Ihr Team der Promotionplattform';
 			
-			$mailFooter = 'Vodafone GmbH, Niederlassung Nord-Ost, Attilastraße 61-67, 12105 Berlin<br /><br />';
 			$mailFooter .= '+++ Dies ist eine automatisch generierte E-Mail. Bitte antworten Sie nicht an diese E-Mail-Adresse. +++';
 			
 			if (is_file($mailLogo)) {
@@ -64,20 +63,20 @@ class MailViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 
     		if (is_file($mailImage)) {
     			$mailImage = $mail->embed(\Swift_Image::fromPath($baseUrl . $mailImage));
-    			$mailImage = '<img src="' . $mailImage . '" alt="Vodafone-Promotionplattform" />';
+    			$mailImage = '<img src="' . $mailImage . '" alt="Promotionplattform" />';
     		} else {
     			$mailImage = '';
     		}
     		
-    		$mail->setFrom(array('noreply@vodafone-promotionshop.de' => 'Vodafone ' . $shopName));
+    		$mail->setFrom(array('noreply@promotionshop.de' => $shopName));
     		$mail->setTo(array($customerMail => $customerName));
 
     		if (GeneralUtility::validEmail($adminMail)) {
-    			$mail->setBcc(array($adminMail => 'Vodafone ' . $shopName));
+    			$mail->setBcc(array($adminMail => $shopName));
     		}
     		
 			$mail->setReturnPath($adminMail);
-			$mail->setSubject('Ihre Bestellung der Vodafone Promotion-Materialien');
+			$mail->setSubject('Ihre Bestellung der Promotion-Materialien');
 			$mail->setBody(
 				'<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"></head>
 				<body style="background-color: #e8e8e8;">
